@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import SPAlert
+import Focuser
 
 struct SignInView: View {
     
     @StateObject var modelData: SignInViewModel
     
     @Environment(\.presentationMode) var presentation
+    
+    @FocusStateLegacy var focusedFields: SignInFormFields?
     
     var body: some View {
         NavigationView {
@@ -30,9 +34,15 @@ struct SignInView: View {
      
                 VStack {
 
-                    LoginTextInput(placeholder: "Email", input: $modelData.email)
+                    LoginTextInput(placeholder: "Email", error: $modelData.emailError, input: $modelData.email)
+                        .onChange(of: modelData.email) { _ in
+                            modelData.isValidEmail()
+                        }
+                        .keyboardType(.emailAddress)
+                        .focusedLegacy($focusedFields, equals: .email)
                     ZStack {
-                        LoginTextInput(placeholder: "Password", input: $modelData.password)
+                        LoginTextInputSecure(placeholder: "Password", error: $modelData.passwordError, input: $modelData.password)
+                            .focusedLegacy($focusedFields, equals: .password)
                         
                         HStack {
                             Spacer()
@@ -55,7 +65,7 @@ struct SignInView: View {
                 
                 VStack {
                     ConfirmButton(text: "Log in") {
-                        
+                        modelData.signIn()
                     }
                     
                     VStack(spacing: 0) {
@@ -73,7 +83,7 @@ struct SignInView: View {
                     .padding(.top, 40)
 
                 }
-                .padding(.bottom, 115)
+                .padding(.bottom, 105)
 
                 NavigationLink(isActive: $modelData.navigateToForgotPassword) {
                     PasswordResetView(modelData: modelData.passwordResetVM)
@@ -82,8 +92,7 @@ struct SignInView: View {
                             ToolbarItem(placement: .principal) {
                                 Image("LegitGrails")
                                     .resizable()
-                                    .frame(width: 70, height: 50)
-                                
+                                    .frame(width: 70, height: 50)          
                             }
                         }
 
@@ -96,6 +105,9 @@ struct SignInView: View {
             .navigationTitle("")
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
+        }
+        .spAlert(isPresent: $modelData.signInError, title: "Error", message: modelData.signInErrorMsg, duration: 1, dismissOnTap: true, preset: .error, haptic: .error, layout: .message()) {
+            
         }
     }
 }

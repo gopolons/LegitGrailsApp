@@ -6,16 +6,20 @@
 //
 
 import SwiftUI
+import SPAlert
+import Focuser
 
 struct SignUpView: View {
     
     @StateObject var modelData: SignUpViewModel
     
+    @FocusStateLegacy var focusedFields: SignUpFormFields?
+    
     var body: some View {
         NavigationView {
             VStack {
 
-                VStack(spacing: 15) {
+                VStack(spacing: UIScreen.screenHeight <= 736 ? 5 : 15) {
                     LegitGrailsLogo()
                     Text("Welcome!")
                         .font(.largeTitle)
@@ -25,15 +29,33 @@ struct SignUpView: View {
                 }
      
                 VStack {
-                    LoginTextInput(placeholder: "Username", input: $modelData.username)
-                    LoginTextInput(placeholder: "Email", input: $modelData.email)
-                    LoginTextInput(placeholder: "Password", input: $modelData.password)
+                    LoginTextInput(placeholder: "Username", error: $modelData.usernameError, input: $modelData.username)
+                        .onChange(of: modelData.username) { _ in
+                            modelData.isValidUsername()
+                        }
+                        .focusedLegacy($focusedFields, equals: .username)
+                    
+                    LoginTextInput(placeholder: "Email", error: $modelData.emailError, input: $modelData.email)
+                        .onChange(of: modelData.email) { _ in
+                            modelData.isValidEmail()
+                        }
+                        .focusedLegacy($focusedFields, equals: .email)
+                        .keyboardType(.emailAddress)
+                    
+                    LoginTextInputSecure(placeholder: "Password", error: $modelData.passwordError, input: $modelData.password)
+                        .onChange(of: modelData.password) { _ in
+                            modelData.isValidPassword()
+                        }
+                        .focusedLegacy($focusedFields, equals: .password)
                     
                     HStack(spacing: 0) {
                         ToggleCheckbox(toggled: $modelData.userAgreement)
                             .padding(.horizontal)
+                            .onChange(of: modelData.userAgreement) { _ in
+                                modelData.userAgreementTap()
+                            }
                         
-                        Text("I agree with our")
+                        Text("I agree with")
                             .foregroundColor(.gray)
                         Button {
                             
@@ -44,15 +66,21 @@ struct SignUpView: View {
                         
                         Spacer()
                         
+                        if modelData.tncError {
+                            Image(systemName: "xmark.octagon")
+                                .foregroundColor(.red)
+                                .padding(.horizontal)
+                        }
+                        
                     }
                     .padding(.top)
                     
                 }
-                .padding(.vertical, 60)
+                .padding(.vertical, UIScreen.screenHeight <= 736 ? 10 : 60)
                 
 
                 ConfirmButton(text: "Create account") {
-                    
+                    modelData.signUp()
                 }
                 
                 VStack(spacing: 0) {
@@ -84,7 +112,7 @@ struct SignUpView: View {
                         }
                     }
                 }
-                .padding(.top, 40)
+                .padding(.top, UIScreen.screenHeight <= 736 ? 10 : 40)
                 
                 NavigationLink(isActive: $modelData.navigateToSignIn) {
                     SignInView(modelData: modelData.signInVM)
@@ -99,6 +127,10 @@ struct SignUpView: View {
             .navigationTitle("")
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
+            
+        }
+        .spAlert(isPresent: $modelData.signUpError, title: "Error", message: modelData.signUpErrorMsg, duration: 1, dismissOnTap: true, preset: .error, haptic: .error, layout: .message()) {
+            
         }
     }
 }

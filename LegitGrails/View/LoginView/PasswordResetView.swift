@@ -6,23 +6,32 @@
 //
 
 import SwiftUI
+import SPAlert
 
 struct PasswordResetView: View {
     
-    @State var modelData: PasswordResetViewModel
+    @Environment(\.presentationMode) var presentation
+    
+    @StateObject var modelData: PasswordResetViewModel
     
     var body: some View {
         NavigationView {
             VStack(spacing: 50) {
-                LoginTextInput(placeholder: "Email", input: $modelData.email)
+                LoginTextInput(placeholder: "Email", error: $modelData.emailError, input: $modelData.email)
+                    .onChange(of: modelData.email) { _ in
+                        modelData.isValidEmail()
+                    }
                 
                 ConfirmButton(text: "Reset password") {
-                    
+                    modelData.restorePassword()
                 }
             }
             .navigationTitle("")
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
+        }
+        .spAlert(isPresent: $modelData.restorePasswordAlert, title: modelData.restorePasswordAlertTitle, message: modelData.restorePasswordAlertText, duration: 1, dismissOnTap: true, preset: modelData.restorePasswordAlertPreset, haptic: modelData.restorePasswordAlertHaptic, layout: .message()) {
+            
         }
     }
 }

@@ -27,6 +27,13 @@
 		9459CF2A2755482F0031E6F7 /* PasswordResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF292755482F0031E6F7 /* PasswordResetViewModel.swift */; };
 		9459CF2C27554E290031E6F7 /* SessionManagerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF2B27554E290031E6F7 /* SessionManagerObject.swift */; };
 		9459CF2E27555CE00031E6F7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF2D27555CE00031E6F7 /* HomeView.swift */; };
+		9459CF312755670D0031E6F7 /* LoginUIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF302755670D0031E6F7 /* LoginUIError.swift */; };
+		9459CF3427556EBA0031E6F7 /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = 9459CF3327556EBA0031E6F7 /* SPAlert */; };
+		9459CF36275584FD0031E6F7 /* LoginTextInputSecure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF35275584FD0031E6F7 /* LoginTextInputSecure.swift */; };
+		9459CF392755976B0031E6F7 /* Focuser in Frameworks */ = {isa = PBXBuildFile; productRef = 9459CF382755976B0031E6F7 /* Focuser */; };
+		9459CF3C275597D10031E6F7 /* SignUpViewFormFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF3B275597D10031E6F7 /* SignUpViewFormFields.swift */; };
+		9459CF3E27559A8D0031E6F7 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF3D27559A8D0031E6F7 /* ViewExtensions.swift */; };
+		9459CF4027559C420031E6F7 /* SignInViewFormFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF3F27559C420031E6F7 /* SignInViewFormFields.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +77,11 @@
 		9459CF292755482F0031E6F7 /* PasswordResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewModel.swift; sourceTree = "<group>"; };
 		9459CF2B27554E290031E6F7 /* SessionManagerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManagerObject.swift; sourceTree = "<group>"; };
 		9459CF2D27555CE00031E6F7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9459CF302755670D0031E6F7 /* LoginUIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUIError.swift; sourceTree = "<group>"; };
+		9459CF35275584FD0031E6F7 /* LoginTextInputSecure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextInputSecure.swift; sourceTree = "<group>"; };
+		9459CF3B275597D10031E6F7 /* SignUpViewFormFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewFormFields.swift; sourceTree = "<group>"; };
+		9459CF3D27559A8D0031E6F7 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		9459CF3F27559C420031E6F7 /* SignInViewFormFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewFormFields.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9459CF392755976B0031E6F7 /* Focuser in Frameworks */,
+				9459CF3427556EBA0031E6F7 /* SPAlert in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +173,7 @@
 		9459CF0A27552DCB0031E6F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9459CF302755670D0031E6F7 /* LoginUIError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +203,7 @@
 				9459CF0F27552E960031E6F7 /* SignUpView.swift */,
 				9459CF1127552E9C0031E6F7 /* SignInView.swift */,
 				9459CF1327552EA60031E6F7 /* PasswordResetView.swift */,
+				9459CF3A275597BC0031E6F7 /* FormFields */,
 				9459CF192755333B0031E6F7 /* Helpers */,
 			);
 			path = LoginView;
@@ -207,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				9459CF1A2755335B0031E6F7 /* LoginTextInput.swift */,
+				9459CF35275584FD0031E6F7 /* LoginTextInputSecure.swift */,
 				9459CF1C275535B00031E6F7 /* LegitGrailsLogo.swift */,
 				9459CF2027553B470031E6F7 /* ConfirmButton.swift */,
 				9459CF1E275535E20031E6F7 /* ToggleCheckbox.swift */,
@@ -218,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				9459CF2327553C4A0031E6F7 /* UIScreenExtensions.swift */,
+				9459CF3D27559A8D0031E6F7 /* ViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -228,6 +246,15 @@
 				9459CF2D27555CE00031E6F7 /* HomeView.swift */,
 			);
 			path = HomeView;
+			sourceTree = "<group>";
+		};
+		9459CF3A275597BC0031E6F7 /* FormFields */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF3B275597D10031E6F7 /* SignUpViewFormFields.swift */,
+				9459CF3F27559C420031E6F7 /* SignInViewFormFields.swift */,
+			);
+			path = FormFields;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +273,10 @@
 			dependencies = (
 			);
 			name = LegitGrails;
+			packageProductDependencies = (
+				9459CF3327556EBA0031E6F7 /* SPAlert */,
+				9459CF382755976B0031E6F7 /* Focuser */,
+			);
 			productName = LegitGrails;
 			productReference = 9459CEDD27552DBC0031E6F7 /* LegitGrails.app */;
 			productType = "com.apple.product-type.application";
@@ -318,6 +349,10 @@
 				Base,
 			);
 			mainGroup = 9459CED427552DBC0031E6F7;
+			packageReferences = (
+				9459CF3227556EBA0031E6F7 /* XCRemoteSwiftPackageReference "SPAlert" */,
+				9459CF372755976B0031E6F7 /* XCRemoteSwiftPackageReference "swift-focuser" */,
+			);
 			productRefGroup = 9459CEDE27552DBC0031E6F7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -361,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9459CF1D275535B00031E6F7 /* LegitGrailsLogo.swift in Sources */,
+				9459CF36275584FD0031E6F7 /* LoginTextInputSecure.swift in Sources */,
 				9459CF2427553C4A0031E6F7 /* UIScreenExtensions.swift in Sources */,
 				9459CEE327552DBC0031E6F7 /* SessionManagerView.swift in Sources */,
 				9459CF2E27555CE00031E6F7 /* HomeView.swift in Sources */,
@@ -370,11 +406,15 @@
 				9459CF1027552E960031E6F7 /* SignUpView.swift in Sources */,
 				9459CF1227552E9C0031E6F7 /* SignInView.swift in Sources */,
 				9459CF2A2755482F0031E6F7 /* PasswordResetViewModel.swift in Sources */,
+				9459CF3E27559A8D0031E6F7 /* ViewExtensions.swift in Sources */,
 				9459CF1727552F570031E6F7 /* SignUpViewModel.swift in Sources */,
 				9459CF26275540300031E6F7 /* SignInViewModel.swift in Sources */,
+				9459CF3C275597D10031E6F7 /* SignUpViewFormFields.swift in Sources */,
 				9459CF1B2755335B0031E6F7 /* LoginTextInput.swift in Sources */,
 				9459CF2127553B470031E6F7 /* ConfirmButton.swift in Sources */,
+				9459CF312755670D0031E6F7 /* LoginUIError.swift in Sources */,
 				9459CEE127552DBC0031E6F7 /* LegitGrailsApp.swift in Sources */,
+				9459CF4027559C420031E6F7 /* SignInViewFormFields.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,6 +763,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9459CF3227556EBA0031E6F7 /* XCRemoteSwiftPackageReference "SPAlert" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPAlert";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		9459CF372755976B0031E6F7 /* XCRemoteSwiftPackageReference "swift-focuser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:art-technologies/swift-focuser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9459CF3327556EBA0031E6F7 /* SPAlert */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9459CF3227556EBA0031E6F7 /* XCRemoteSwiftPackageReference "SPAlert" */;
+			productName = SPAlert;
+		};
+		9459CF382755976B0031E6F7 /* Focuser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9459CF372755976B0031E6F7 /* XCRemoteSwiftPackageReference "swift-focuser" */;
+			productName = Focuser;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9459CED527552DBC0031E6F7 /* Project object */;
 }

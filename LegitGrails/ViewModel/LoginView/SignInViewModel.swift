@@ -14,12 +14,44 @@ final class SignInViewModel: ObservableObject {
     @Published var navigateToForgotPassword = false
     var coordinator: SessionManagerObject
     @Published var passwordResetVM: PasswordResetViewModel
+    @Published var emailError = ""
+    @Published var passwordError = ""
+    @Published var signInError = false
+    @Published var signInErrorMsg = ""
+    
     
     
 // MARK: Methods
     func forgotPassword() {
         passwordResetVM = PasswordResetViewModel(coordinator: coordinator)
         navigateToForgotPassword.toggle()
+    }
+    
+    func isValidEmail() {
+        if email == "" {
+            withAnimation {
+                self.emailError = "Invalid email"
+            }
+        } else {
+            withAnimation {
+                self.emailError = ""
+            }
+        }
+    }
+    
+    func isValidData() {
+        isValidEmail()
+    }
+    
+    func signIn() {
+        isValidData()
+        
+        if self.emailError == "" && self.password != "" {
+            print("success")
+        } else {
+            self.signInErrorMsg = "Invalid credentials, please check your data"
+            self.signInError.toggle()
+        }
     }
     
 // MARK: Initialization

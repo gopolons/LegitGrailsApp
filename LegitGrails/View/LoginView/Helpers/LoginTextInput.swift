@@ -11,16 +11,34 @@ struct LoginTextInput: View {
     
     var placeholder: String
     
+    @Binding var error: String
+    
     @Binding var input: String
 
     var body: some View {
-        VStack {
-            TextField(placeholder, text: $input)
-                .padding(.vertical)
-                
-            Divider()
+        ZStack {
+            VStack {
+                TextField(placeholder, text: $input)
+                    .padding(.vertical, UIScreen.screenHeight <= 736.0 ? 10 : 15)
+                    
+                Divider()
+            }
+            .padding(.horizontal)
+            
+            if error != "" {
+                HStack {
+                    Spacer()
+                    
+                    Text(error)
+                        .foregroundColor(.red)
+                        .font(.footnote)
+                    
+                    Image(systemName: "xmark.octagon")
+                        .foregroundColor(.red)
+                        .padding()
+                }
+            }
         }
-        .padding(.horizontal)
     }
 }
 
@@ -28,7 +46,10 @@ struct LoginTextInput_Previews: PreviewProvider {
     
     @State static var input = ""
     
+    @State static var error = ""
+
+    
     static var previews: some View {
-        LoginTextInput(placeholder: "Email", input: $input)
+        LoginTextInput(placeholder: "Email", error: $error, input: $input)
     }
 }
