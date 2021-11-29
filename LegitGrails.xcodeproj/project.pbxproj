@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9459CEE127552DBC0031E6F7 /* LegitGrailsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CEE027552DBC0031E6F7 /* LegitGrailsApp.swift */; };
-		9459CEE327552DBC0031E6F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CEE227552DBC0031E6F7 /* ContentView.swift */; };
+		9459CEE327552DBC0031E6F7 /* SessionManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CEE227552DBC0031E6F7 /* SessionManagerView.swift */; };
 		9459CEE527552DBC0031E6F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9459CEE427552DBC0031E6F7 /* Assets.xcassets */; };
 		9459CEE827552DBC0031E6F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9459CEE727552DBC0031E6F7 /* Preview Assets.xcassets */; };
 		9459CEF227552DBC0031E6F7 /* LegitGrailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CEF127552DBC0031E6F7 /* LegitGrailsTests.swift */; };
@@ -25,6 +25,8 @@
 		9459CF2427553C4A0031E6F7 /* UIScreenExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF2327553C4A0031E6F7 /* UIScreenExtensions.swift */; };
 		9459CF26275540300031E6F7 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF25275540300031E6F7 /* SignInViewModel.swift */; };
 		9459CF2A2755482F0031E6F7 /* PasswordResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF292755482F0031E6F7 /* PasswordResetViewModel.swift */; };
+		9459CF2C27554E290031E6F7 /* SessionManagerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF2B27554E290031E6F7 /* SessionManagerObject.swift */; };
+		9459CF2E27555CE00031E6F7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF2D27555CE00031E6F7 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +49,7 @@
 /* Begin PBXFileReference section */
 		9459CEDD27552DBC0031E6F7 /* LegitGrails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LegitGrails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9459CEE027552DBC0031E6F7 /* LegitGrailsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegitGrailsApp.swift; sourceTree = "<group>"; };
-		9459CEE227552DBC0031E6F7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9459CEE227552DBC0031E6F7 /* SessionManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManagerView.swift; sourceTree = "<group>"; };
 		9459CEE427552DBC0031E6F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9459CEE727552DBC0031E6F7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9459CEED27552DBC0031E6F7 /* LegitGrailsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LegitGrailsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +68,8 @@
 		9459CF2327553C4A0031E6F7 /* UIScreenExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtensions.swift; sourceTree = "<group>"; };
 		9459CF25275540300031E6F7 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		9459CF292755482F0031E6F7 /* PasswordResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewModel.swift; sourceTree = "<group>"; };
+		9459CF2B27554E290031E6F7 /* SessionManagerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManagerObject.swift; sourceTree = "<group>"; };
+		9459CF2D27555CE00031E6F7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +166,8 @@
 		9459CF0B27552DCF0031E6F7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9459CEE227552DBC0031E6F7 /* ContentView.swift */,
+				9459CEE227552DBC0031E6F7 /* SessionManagerView.swift */,
+				9459CF2F27555CE90031E6F7 /* HomeView */,
 				9459CF1527552EAB0031E6F7 /* LoginView */,
 			);
 			path = View;
@@ -171,6 +176,7 @@
 		9459CF0C27552DD30031E6F7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9459CF2B27554E290031E6F7 /* SessionManagerObject.swift */,
 				9459CF1827552F630031E6F7 /* LoginView */,
 			);
 			path = ViewModel;
@@ -214,6 +220,14 @@
 				9459CF2327553C4A0031E6F7 /* UIScreenExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9459CF2F27555CE90031E6F7 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF2D27555CE00031E6F7 /* HomeView.swift */,
+			);
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,7 +362,9 @@
 			files = (
 				9459CF1D275535B00031E6F7 /* LegitGrailsLogo.swift in Sources */,
 				9459CF2427553C4A0031E6F7 /* UIScreenExtensions.swift in Sources */,
-				9459CEE327552DBC0031E6F7 /* ContentView.swift in Sources */,
+				9459CEE327552DBC0031E6F7 /* SessionManagerView.swift in Sources */,
+				9459CF2E27555CE00031E6F7 /* HomeView.swift in Sources */,
+				9459CF2C27554E290031E6F7 /* SessionManagerObject.swift in Sources */,
 				9459CF1427552EA60031E6F7 /* PasswordResetView.swift in Sources */,
 				9459CF1F275535E20031E6F7 /* ToggleCheckbox.swift in Sources */,
 				9459CF1027552E960031E6F7 /* SignUpView.swift in Sources */,

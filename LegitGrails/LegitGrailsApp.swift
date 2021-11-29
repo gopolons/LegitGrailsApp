@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct LegitGrailsApp: App {
+    
+    @StateObject var coordinator = SessionManagerObject()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SessionManagerView(coordinator: coordinator)
         }
     }
 }

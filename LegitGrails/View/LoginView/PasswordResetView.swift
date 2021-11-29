@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PasswordResetView: View {
     
-    @State var modelData = PasswordResetViewModel()
+    @State var modelData: PasswordResetViewModel
     
     var body: some View {
         NavigationView {
@@ -29,6 +29,6 @@ struct PasswordResetView: View {
 
 struct PasswordResetView_Previews: PreviewProvider {
     static var previews: some View {
-        PasswordResetView()
+        PasswordResetView(modelData: PasswordResetViewModel(coordinator: SessionManagerObject()))
     }
 }

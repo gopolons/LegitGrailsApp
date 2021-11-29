@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignInView: View {
     
-    @StateObject var modelData = SignInViewModel()
+    @StateObject var modelData: SignInViewModel
     
     @Environment(\.presentationMode) var presentation
     
@@ -76,7 +76,7 @@ struct SignInView: View {
                 .padding(.bottom, 115)
 
                 NavigationLink(isActive: $modelData.navigateToForgotPassword) {
-                    PasswordResetView()
+                    PasswordResetView(modelData: modelData.passwordResetVM)
                         .navigationTitle("Reset password")
                         .toolbar {
                             ToolbarItem(placement: .principal) {
@@ -102,6 +102,6 @@ struct SignInView: View {
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
-        SignInView()
+        SignInView(modelData: SignInViewModel(coordinator: SessionManagerObject()))
     }
 }

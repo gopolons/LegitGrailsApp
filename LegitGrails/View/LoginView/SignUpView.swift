@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SignUpView: View {
     
-    @StateObject var modelData = SignUpViewModel()
+    @StateObject var modelData: SignUpViewModel
     
     var body: some View {
         NavigationView {
@@ -87,7 +87,7 @@ struct SignUpView: View {
                 .padding(.top, 40)
                 
                 NavigationLink(isActive: $modelData.navigateToSignIn) {
-                    SignInView()
+                    SignInView(modelData: modelData.signInVM)
                         .navigationTitle("")
                         .navigationBarBackButtonHidden(true)
                         .navigationBarHidden(true)
@@ -105,6 +105,6 @@ struct SignUpView: View {
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        SignUpView(modelData: SignUpViewModel(coordinator: SessionManagerObject()))
     }
 }

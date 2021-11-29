@@ -8,5 +8,13 @@
 import Foundation
 
 final class PasswordResetViewModel: ObservableObject {
+// MARK: Stored parameters
     @Published var email = ""
+    
+    var coordinator: SessionManagerObject
+    
+// MARK: Initialization
+    init(coordinator: SessionManagerObject) {
+        self.coordinator = coordinator
+    }
 }
