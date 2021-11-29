@@ -14,6 +14,17 @@
 		9459CEF227552DBC0031E6F7 /* LegitGrailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CEF127552DBC0031E6F7 /* LegitGrailsTests.swift */; };
 		9459CEFC27552DBC0031E6F7 /* LegitGrailsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CEFB27552DBC0031E6F7 /* LegitGrailsUITests.swift */; };
 		9459CEFE27552DBC0031E6F7 /* LegitGrailsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CEFD27552DBC0031E6F7 /* LegitGrailsUITestsLaunchTests.swift */; };
+		9459CF1027552E960031E6F7 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF0F27552E960031E6F7 /* SignUpView.swift */; };
+		9459CF1227552E9C0031E6F7 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF1127552E9C0031E6F7 /* SignInView.swift */; };
+		9459CF1427552EA60031E6F7 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF1327552EA60031E6F7 /* PasswordResetView.swift */; };
+		9459CF1727552F570031E6F7 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF1627552F570031E6F7 /* SignUpViewModel.swift */; };
+		9459CF1B2755335B0031E6F7 /* LoginTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF1A2755335B0031E6F7 /* LoginTextInput.swift */; };
+		9459CF1D275535B00031E6F7 /* LegitGrailsLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF1C275535B00031E6F7 /* LegitGrailsLogo.swift */; };
+		9459CF1F275535E20031E6F7 /* ToggleCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF1E275535E20031E6F7 /* ToggleCheckbox.swift */; };
+		9459CF2127553B470031E6F7 /* ConfirmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF2027553B470031E6F7 /* ConfirmButton.swift */; };
+		9459CF2427553C4A0031E6F7 /* UIScreenExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF2327553C4A0031E6F7 /* UIScreenExtensions.swift */; };
+		9459CF26275540300031E6F7 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF25275540300031E6F7 /* SignInViewModel.swift */; };
+		9459CF2A2755482F0031E6F7 /* PasswordResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF292755482F0031E6F7 /* PasswordResetViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +55,17 @@
 		9459CEF727552DBC0031E6F7 /* LegitGrailsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LegitGrailsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9459CEFB27552DBC0031E6F7 /* LegitGrailsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegitGrailsUITests.swift; sourceTree = "<group>"; };
 		9459CEFD27552DBC0031E6F7 /* LegitGrailsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegitGrailsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9459CF0F27552E960031E6F7 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		9459CF1127552E9C0031E6F7 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		9459CF1327552EA60031E6F7 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
+		9459CF1627552F570031E6F7 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		9459CF1A2755335B0031E6F7 /* LoginTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextInput.swift; sourceTree = "<group>"; };
+		9459CF1C275535B00031E6F7 /* LegitGrailsLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegitGrailsLogo.swift; sourceTree = "<group>"; };
+		9459CF1E275535E20031E6F7 /* ToggleCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCheckbox.swift; sourceTree = "<group>"; };
+		9459CF2027553B470031E6F7 /* ConfirmButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmButton.swift; sourceTree = "<group>"; };
+		9459CF2327553C4A0031E6F7 /* UIScreenExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtensions.swift; sourceTree = "<group>"; };
+		9459CF25275540300031E6F7 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		9459CF292755482F0031E6F7 /* PasswordResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +117,10 @@
 			isa = PBXGroup;
 			children = (
 				9459CEE027552DBC0031E6F7 /* LegitGrailsApp.swift */,
-				9459CEE227552DBC0031E6F7 /* ContentView.swift */,
+				9459CF2227553C290031E6F7 /* Extensions */,
+				9459CF0B27552DCF0031E6F7 /* View */,
+				9459CF0C27552DD30031E6F7 /* ViewModel */,
+				9459CF0A27552DCB0031E6F7 /* Model */,
 				9459CEE427552DBC0031E6F7 /* Assets.xcassets */,
 				9459CEE627552DBC0031E6F7 /* Preview Content */,
 			);
@@ -125,6 +150,70 @@
 				9459CEFD27552DBC0031E6F7 /* LegitGrailsUITestsLaunchTests.swift */,
 			);
 			path = LegitGrailsUITests;
+			sourceTree = "<group>";
+		};
+		9459CF0A27552DCB0031E6F7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9459CF0B27552DCF0031E6F7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9459CEE227552DBC0031E6F7 /* ContentView.swift */,
+				9459CF1527552EAB0031E6F7 /* LoginView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9459CF0C27552DD30031E6F7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF1827552F630031E6F7 /* LoginView */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9459CF1527552EAB0031E6F7 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF0F27552E960031E6F7 /* SignUpView.swift */,
+				9459CF1127552E9C0031E6F7 /* SignInView.swift */,
+				9459CF1327552EA60031E6F7 /* PasswordResetView.swift */,
+				9459CF192755333B0031E6F7 /* Helpers */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		9459CF1827552F630031E6F7 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF1627552F570031E6F7 /* SignUpViewModel.swift */,
+				9459CF292755482F0031E6F7 /* PasswordResetViewModel.swift */,
+				9459CF25275540300031E6F7 /* SignInViewModel.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		9459CF192755333B0031E6F7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF1A2755335B0031E6F7 /* LoginTextInput.swift */,
+				9459CF1C275535B00031E6F7 /* LegitGrailsLogo.swift */,
+				9459CF2027553B470031E6F7 /* ConfirmButton.swift */,
+				9459CF1E275535E20031E6F7 /* ToggleCheckbox.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9459CF2227553C290031E6F7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF2327553C4A0031E6F7 /* UIScreenExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +346,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9459CF1D275535B00031E6F7 /* LegitGrailsLogo.swift in Sources */,
+				9459CF2427553C4A0031E6F7 /* UIScreenExtensions.swift in Sources */,
 				9459CEE327552DBC0031E6F7 /* ContentView.swift in Sources */,
+				9459CF1427552EA60031E6F7 /* PasswordResetView.swift in Sources */,
+				9459CF1F275535E20031E6F7 /* ToggleCheckbox.swift in Sources */,
+				9459CF1027552E960031E6F7 /* SignUpView.swift in Sources */,
+				9459CF1227552E9C0031E6F7 /* SignInView.swift in Sources */,
+				9459CF2A2755482F0031E6F7 /* PasswordResetViewModel.swift in Sources */,
+				9459CF1727552F570031E6F7 /* SignUpViewModel.swift in Sources */,
+				9459CF26275540300031E6F7 /* SignInViewModel.swift in Sources */,
+				9459CF1B2755335B0031E6F7 /* LoginTextInput.swift in Sources */,
+				9459CF2127553B470031E6F7 /* ConfirmButton.swift in Sources */,
 				9459CEE127552DBC0031E6F7 /* LegitGrailsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
