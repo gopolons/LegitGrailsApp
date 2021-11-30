@@ -6,16 +6,19 @@
 //
 
 import SwiftUI
+import SPAlert
 
 final class SignUpViewModel: ObservableObject {
 // MARK: Stored parameters
+    private var dataRepo: AuthenticationDataRepositoryProtocol
+    var coordinator: SessionManagerObject
+
     @Published var username = ""
     @Published var email = ""
     @Published var password = ""
     @Published var userAgreement = false
     @Published var availableLogInServices = ["FacebookIcon", "GoogleIcon", "TwitterIcon"]
     @Published var navigateToSignIn = false
-    var coordinator: SessionManagerObject
     @Published var signInVM: SignInViewModel
     @Published var usernameError = ""
     @Published var emailError = ""
@@ -23,6 +26,7 @@ final class SignUpViewModel: ObservableObject {
     @Published var tncError = false
     @Published var signUpError = false
     @Published var signUpErrorMsg = ""
+    @Published var isLoading = false
     
 // MARK: Methods
     func signIn() {
@@ -39,11 +43,21 @@ final class SignUpViewModel: ObservableObject {
     }
     
     func isValidUsername() {
-        if username == "" {
-            withAnimation {
-                self.usernameError = "Invalid username"
+        dataRepo.checkUserName(username) { response, err in
+            guard err == nil else {
+                switch err {
+                case .invalid:
+                    withAnimation {
+                        self.usernameError = "Invalid username"
+                    }
+                    return
+                default:
+                    withAnimation {
+                        self.usernameError = "Username is taken"
+                    }
+                    return
+                }
             }
-        } else {
             withAnimation {
                 self.usernameError = ""
             }
@@ -51,23 +65,28 @@ final class SignUpViewModel: ObservableObject {
     }
     
     func isValidEmail() {
-        if email == "" {
-            withAnimation {
-                self.emailError = "Invalid email"
+        dataRepo.checkEmail(email) { response, err in
+            guard err == nil else {
+                withAnimation {
+                    self.emailError = "Invalid email"
+                }
+                return
             }
-        } else {
             withAnimation {
                 self.emailError = ""
             }
         }
     }
+
     
     func isValidPassword() {
-        if password == "" {
-            withAnimation {
-                self.passwordError = "Invalid password"
+        dataRepo.checkPassword(password) { response, err in
+            guard err == nil else {
+                withAnimation {
+                    self.passwordError = "Invalid password"
+                }
+                return
             }
-        } else {
             withAnimation {
                 self.passwordError = ""
             }
@@ -91,9 +110,36 @@ final class SignUpViewModel: ObservableObject {
     
     func signUp() {
         isValidData()
-        
         if self.emailError == "" && self.usernameError == "" && self.passwordError == "" && self.tncError == false {
-            print("success")
+            withAnimation {
+                self.isLoading.toggle()
+            }
+            dataRepo.signUp(username: username, email: email, password: password) { response, err in
+                guard err == nil else {
+                    switch err {
+                    case .invalidRequest:
+                        withAnimation {
+                            self.isLoading.toggle()
+                        }
+                        self.signUpErrorMsg = "Invalid request, please try again later"
+                        self.signUpError.toggle()
+                        return
+                    case .noConnection:
+                        withAnimation {
+                            self.isLoading.toggle()
+                        }
+                        self.signUpErrorMsg = "No connection, please try again later"
+                        self.signUpError.toggle()
+                        return
+                    case .none:
+                        return
+                    }
+                }
+                withAnimation {
+                    self.isLoading.toggle()
+                    self.coordinator.authToken = response!.authenticationToken
+                }
+            }
         } else {
             self.signUpErrorMsg = "Invalid credentials, please check your data"
             self.signUpError.toggle()
@@ -101,8 +147,9 @@ final class SignUpViewModel: ObservableObject {
     }
     
 // MARK: Initialization
-    init(coordinator: SessionManagerObject) {
+    init(coordinator: SessionManagerObject, dataRepo: AuthenticationDataRepositoryProtocol = AuthenticationDataRepository()) {
         self.coordinator = coordinator
         self.signInVM = SignInViewModel(coordinator: coordinator)
+        self.dataRepo = dataRepo
     }
 }

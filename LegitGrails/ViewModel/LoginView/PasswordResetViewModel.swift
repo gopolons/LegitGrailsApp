@@ -10,6 +10,9 @@ import SPAlert
 
 final class PasswordResetViewModel: ObservableObject {
 // MARK: Stored parameters
+    var coordinator: SessionManagerObject
+    private var dataRepo: AuthenticationDataRepositoryProtocol
+    
     @Published var email = ""
     @Published var emailError = ""
     @Published var restorePasswordAlert = false
@@ -17,16 +20,17 @@ final class PasswordResetViewModel: ObservableObject {
     @Published var restorePasswordAlertText = ""
     @Published var restorePasswordAlertPreset: SPAlertIconPreset = .done
     @Published var restorePasswordAlertHaptic: SPAlertHaptic = .none
-    
-    var coordinator: SessionManagerObject
-    
+    @Published var isLoading = false
+        
 // MARK: Methods
     func isValidEmail() {
-        if email == "" {
-            withAnimation {
-                self.emailError = "Invalid email"
+        dataRepo.checkEmail(email) { response, err in
+            guard err == nil else {
+                withAnimation {
+                    self.emailError = "Invalid email"
+                }
+                return
             }
-        } else {
             withAnimation {
                 self.emailError = ""
             }
@@ -39,13 +43,46 @@ final class PasswordResetViewModel: ObservableObject {
     
     func restorePassword() {
         isValidData()
-        
         if emailError == "" {
-            self.restorePasswordAlertTitle = "Success!"
-            self.restorePasswordAlertText = "Check your email for the password restoration link"
-            self.restorePasswordAlertHaptic = .success
-            self.restorePasswordAlertPreset = .done
-            self.restorePasswordAlert = true
+            withAnimation {
+                self.isLoading.toggle()
+            }
+            dataRepo.restorePasswordWithEmail(email) { response, err in
+                guard err == nil else {
+                    switch err {
+                    case .invalidRequest:
+                        withAnimation {
+                            self.isLoading.toggle()
+                        }
+                        self.restorePasswordAlertTitle = "Error!"
+                        self.restorePasswordAlertText = "Invalid request, try again later"
+                        self.restorePasswordAlertHaptic = .error
+                        self.restorePasswordAlertPreset = .error
+                        self.restorePasswordAlert = true
+                        return
+                    case .noConnection:
+                        withAnimation {
+                            self.isLoading.toggle()
+                        }
+                        self.restorePasswordAlertTitle = "Error!"
+                        self.restorePasswordAlertText = "No connection, try again later"
+                        self.restorePasswordAlertHaptic = .error
+                        self.restorePasswordAlertPreset = .error
+                        self.restorePasswordAlert = true
+                        return
+                    case .none:
+                        return
+                    }
+                }
+                withAnimation {
+                    self.isLoading.toggle()
+                }
+                self.restorePasswordAlertTitle = "Success!"
+                self.restorePasswordAlertText = "Check your email for the password restoration link"
+                self.restorePasswordAlertHaptic = .success
+                self.restorePasswordAlertPreset = .done
+                self.restorePasswordAlert = true
+            }
         } else {
             self.restorePasswordAlertTitle = "Error!"
             self.restorePasswordAlertText = "Check your email and try again"
@@ -56,7 +93,8 @@ final class PasswordResetViewModel: ObservableObject {
     }
     
 // MARK: Initialization
-    init(coordinator: SessionManagerObject) {
+    init(coordinator: SessionManagerObject, dataRepo: AuthenticationDataRepositoryProtocol = AuthenticationDataRepository()) {
         self.coordinator = coordinator
+        self.dataRepo = dataRepo
     }
 }

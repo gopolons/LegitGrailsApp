@@ -18,99 +18,108 @@ struct SignInView: View {
     @FocusStateLegacy var focusedFields: SignInFormFields?
     
     var body: some View {
-        NavigationView {
-            VStack {
-
-                VStack(spacing: 15) {
-                    LegitGrailsLogo()
-                    Text("Welcome back!")
-                        .font(.largeTitle)
-                        .bold()
-                    Text("Login to start authentication")
-                        .foregroundColor(.gray)
-                    
-                }
-                .padding(.top, 20)
-     
+        ZStack {
+            NavigationView {
                 VStack {
 
-                    LoginTextInput(placeholder: "Email", error: $modelData.emailError, input: $modelData.email)
-                        .onChange(of: modelData.email) { _ in
-                            modelData.isValidEmail()
-                        }
-                        .keyboardType(.emailAddress)
-                        .focusedLegacy($focusedFields, equals: .email)
-                    ZStack {
-                        LoginTextInputSecure(placeholder: "Password", error: $modelData.passwordError, input: $modelData.password)
-                            .focusedLegacy($focusedFields, equals: .password)
+                    VStack(spacing: 15) {
+                        LegitGrailsLogo()
+                        Text("Welcome back!")
+                            .font(.largeTitle)
+                            .bold()
+                        Text("Login to start authentication")
+                            .foregroundColor(.gray)
                         
-                        HStack {
-                            Spacer()
-                            
-                            Button {
-                                modelData.forgotPassword()
-                            } label: {
-                                Text("Forgot password?")
-                                    .font(.footnote)
-                                    .bold()
+                    }
+                    .padding(.top, 20)
+         
+                    VStack {
+
+                        LoginTextInput(placeholder: "Email", error: $modelData.emailError, input: $modelData.email)
+                            .onChange(of: modelData.email) { _ in
+                                modelData.isValidEmail()
                             }
+                            .keyboardType(.emailAddress)
+                            .focusedLegacy($focusedFields, equals: .email)
+                        ZStack {
+                            LoginTextInputSecure(placeholder: "Password", error: $modelData.passwordError, input: $modelData.password)
+                                .focusedLegacy($focusedFields, equals: .password)
+                            
+                            HStack {
+                                Spacer()
+                                
+                                Button {
+                                    modelData.forgotPassword()
+                                } label: {
+                                    Text("Forgot password?")
+                                        .font(.footnote)
+                                        .bold()
+                                }
+                            }
+                            .padding()
                         }
-                        .padding()
                     }
-                }
-                .padding(.vertical, 60)
-                
-                
-                Spacer()
-                
-                VStack {
-                    ConfirmButton(text: "Log in") {
-                        self.focusedFields = SignInFormFields.none
-                        hideKeyboard()
-                        modelData.signIn()
-                    }
+                    .padding(.vertical, 60)
                     
-                    VStack(spacing: 0) {
-                        HStack {
-                            Text("Don't have an account?")
-                                .foregroundColor(.gray)
-                            
-                            Button {
-                                presentation.wrappedValue.dismiss()
-                            } label: {
-                                Text("Sign up")
+                    
+                    Spacer()
+                    
+                    VStack {
+                        ConfirmButton(text: "Log in") {
+                            self.focusedFields = SignInFormFields.none
+                            hideKeyboard()
+                            modelData.signIn()
+                        }
+                        
+                        VStack(spacing: 0) {
+                            HStack {
+                                Text("Don't have an account?")
+                                    .foregroundColor(.gray)
+                                
+                                Button {
+                                    presentation.wrappedValue.dismiss()
+                                } label: {
+                                    Text("Sign up")
+                                }
                             }
                         }
+                        .padding(.top, 40)
+
                     }
-                    .padding(.top, 40)
+                    .padding(.bottom, 105)
 
-                }
-                .padding(.bottom, 105)
-
-                NavigationLink(isActive: $modelData.navigateToForgotPassword) {
-                    PasswordResetView(modelData: modelData.passwordResetVM)
-                        .navigationTitle("Reset password")
-                        .toolbar {
-                            ToolbarItem(placement: .principal) {
-                                Image("LegitGrails")
-                                    .resizable()
-                                    .frame(width: 70, height: 50)          
+                    NavigationLink(isActive: $modelData.navigateToForgotPassword) {
+                        PasswordResetView(modelData: modelData.passwordResetVM)
+                            .navigationTitle("Reset password")
+                            .toolbar {
+                                ToolbarItem(placement: .principal) {
+                                    Image("LegitGrails")
+                                        .resizable()
+                                        .frame(width: 70, height: 50)
+                                }
                             }
-                        }
 
-                } label: {
-                    Text("")
+                    } label: {
+                        Text("")
+                    }
+                    .hidden()
+
                 }
-                .hidden()
-
+                .navigationTitle("")
+                .navigationBarBackButtonHidden(true)
+                .navigationBarHidden(true)
             }
-            .navigationTitle("")
-            .navigationBarBackButtonHidden(true)
-            .navigationBarHidden(true)
+            .spAlert(isPresent: $modelData.signInError, title: "Error", message: modelData.signInErrorMsg, duration: 1, dismissOnTap: true, preset: .error, haptic: .error, layout: .message()) {
+                
+            }
+            if modelData.isLoading {     
+                ActivityIndicator(isAnimating: true)
+                    .padding()
+                    .background(Color(.systemGray4))
+                    .cornerRadius(5)
+            }
         }
-        .spAlert(isPresent: $modelData.signInError, title: "Error", message: modelData.signInErrorMsg, duration: 1, dismissOnTap: true, preset: .error, haptic: .error, layout: .message()) {
-            
-        }
+
     }
 }
 

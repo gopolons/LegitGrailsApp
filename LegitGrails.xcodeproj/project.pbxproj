@@ -39,6 +39,8 @@
 		9459CF4A2755AD0F0031E6F7 /* NetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF492755AD0F0031E6F7 /* NetError.swift */; };
 		9459CF522755AEE50031E6F7 /* NetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF512755AEE50031E6F7 /* NetResponse.swift */; };
 		9459CF572755AF550031E6F7 /* AuthenticationAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF562755AF550031E6F7 /* AuthenticationAPIService.swift */; };
+		9459CF5B275626420031E6F7 /* DataVerificationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF5A275626420031E6F7 /* DataVerificationResponse.swift */; };
+		9459CF5D275631440031E6F7 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF5C275631440031E6F7 /* ActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,8 @@
 		9459CF492755AD0F0031E6F7 /* NetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetError.swift; sourceTree = "<group>"; };
 		9459CF512755AEE50031E6F7 /* NetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetResponse.swift; sourceTree = "<group>"; };
 		9459CF562755AF550031E6F7 /* AuthenticationAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAPIService.swift; sourceTree = "<group>"; };
+		9459CF5A275626420031E6F7 /* DataVerificationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataVerificationResponse.swift; sourceTree = "<group>"; };
+		9459CF5C275631440031E6F7 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +242,7 @@
 			children = (
 				9459CF1A2755335B0031E6F7 /* LoginTextInput.swift */,
 				9459CF35275584FD0031E6F7 /* LoginTextInputSecure.swift */,
+				9459CF5C275631440031E6F7 /* ActivityIndicator.swift */,
 				9459CF1C275535B00031E6F7 /* LegitGrailsLogo.swift */,
 				9459CF2027553B470031E6F7 /* ConfirmButton.swift */,
 				9459CF1E275535E20031E6F7 /* ToggleCheckbox.swift */,
@@ -276,6 +281,7 @@
 			children = (
 				9459CF452755AB850031E6F7 /* AuthenticationParameterError.swift */,
 				9459CF492755AD0F0031E6F7 /* NetError.swift */,
+				9459CF5A275626420031E6F7 /* DataVerificationResponse.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -291,7 +297,7 @@
 		9459CF4D2755AD8A0031E6F7 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				9459CF432755AB180031E6F7 /* AuthenticationDataRepository.swift */,
+				9459CF59275622910031E6F7 /* Authentication */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -307,9 +313,25 @@
 		9459CF532755AF1D0031E6F7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				9459CF562755AF550031E6F7 /* AuthenticationAPIService.swift */,
+				9459CF58275622820031E6F7 /* Authentication */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		9459CF58275622820031E6F7 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF562755AF550031E6F7 /* AuthenticationAPIService.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		9459CF59275622910031E6F7 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF432755AB180031E6F7 /* AuthenticationDataRepository.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,6 +473,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9459CF482755ACDD0031E6F7 /* SessionData.swift in Sources */,
+				9459CF5B275626420031E6F7 /* DataVerificationResponse.swift in Sources */,
 				9459CF1D275535B00031E6F7 /* LegitGrailsLogo.swift in Sources */,
 				9459CF522755AEE50031E6F7 /* NetResponse.swift in Sources */,
 				9459CF36275584FD0031E6F7 /* LoginTextInputSecure.swift in Sources */,
@@ -465,6 +488,7 @@
 				9459CF572755AF550031E6F7 /* AuthenticationAPIService.swift in Sources */,
 				9459CF1227552E9C0031E6F7 /* SignInView.swift in Sources */,
 				9459CF442755AB180031E6F7 /* AuthenticationDataRepository.swift in Sources */,
+				9459CF5D275631440031E6F7 /* ActivityIndicator.swift in Sources */,
 				9459CF4A2755AD0F0031E6F7 /* NetError.swift in Sources */,
 				9459CF2A2755482F0031E6F7 /* PasswordResetViewModel.swift in Sources */,
 				9459CF3E27559A8D0031E6F7 /* ViewExtensions.swift in Sources */,

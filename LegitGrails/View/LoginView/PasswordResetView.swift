@@ -15,25 +15,33 @@ struct PasswordResetView: View {
     @StateObject var modelData: PasswordResetViewModel
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 50) {
-                LoginTextInput(placeholder: "Email", error: $modelData.emailError, input: $modelData.email)
-                    .onChange(of: modelData.email) { _ in
-                        modelData.isValidEmail()
+        ZStack {
+            NavigationView {
+                VStack(spacing: 50) {
+                    LoginTextInput(placeholder: "Email", error: $modelData.emailError, input: $modelData.email)
+                        .onChange(of: modelData.email) { _ in
+                            modelData.isValidEmail()
+                        }
+                    
+                    ConfirmButton(text: "Reset password") {
+                        hideKeyboard()
+                        modelData.restorePassword()
                     }
-                
-                ConfirmButton(text: "Reset password") {
-                    hideKeyboard()
-                    modelData.restorePassword()
                 }
-            }
-            .navigationTitle("")
-            .navigationBarBackButtonHidden(true)
-            .navigationBarHidden(true)
+                .navigationTitle("")
+                .navigationBarBackButtonHidden(true)
+                .navigationBarHidden(true)
 
-        }
-        .spAlert(isPresent: $modelData.restorePasswordAlert, title: modelData.restorePasswordAlertTitle, message: modelData.restorePasswordAlertText, duration: 1, dismissOnTap: true, preset: modelData.restorePasswordAlertPreset, haptic: modelData.restorePasswordAlertHaptic, layout: .message()) {
-            
+            }
+            .spAlert(isPresent: $modelData.restorePasswordAlert, title: modelData.restorePasswordAlertTitle, message: modelData.restorePasswordAlertText, duration: 1, dismissOnTap: true, preset: modelData.restorePasswordAlertPreset, haptic: modelData.restorePasswordAlertHaptic, layout: .message()) {
+                
+            }
+            if modelData.isLoading {
+                ActivityIndicator(isAnimating: true)
+                    .padding()
+                    .background(Color(.systemGray4))
+                    .cornerRadius(5)
+            }
         }
     }
 }
