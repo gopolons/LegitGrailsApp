@@ -53,6 +53,8 @@
 		9459CF7A27565D1D0031E6F7 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF7927565D1C0031E6F7 /* Post.swift */; };
 		9459CF7C2756617C0031E6F7 /* PostStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF7B2756617C0031E6F7 /* PostStackViewModel.swift */; };
 		9459CF7E275665030031E6F7 /* LinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF7D275665030031E6F7 /* LinkButton.swift */; };
+		9459CF80275674670031E6F7 /* PostDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF7F275674670031E6F7 /* PostDataRepository.swift */; };
+		9459CF83275674F30031E6F7 /* PostAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF82275674F30031E6F7 /* PostAPIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,8 @@
 		9459CF7927565D1C0031E6F7 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		9459CF7B2756617C0031E6F7 /* PostStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStackViewModel.swift; sourceTree = "<group>"; };
 		9459CF7D275665030031E6F7 /* LinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkButton.swift; sourceTree = "<group>"; };
+		9459CF7F275674670031E6F7 /* PostDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDataRepository.swift; sourceTree = "<group>"; };
+		9459CF82275674F30031E6F7 /* PostAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +328,7 @@
 		9459CF4D2755AD8A0031E6F7 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				9459CF812756746C0031E6F7 /* HomeView */,
 				9459CF59275622910031E6F7 /* Authentication */,
 			);
 			path = Repositories;
@@ -349,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				9459CF562755AF550031E6F7 /* AuthenticationAPIService.swift */,
+				9459CF82275674F30031E6F7 /* PostAPIService.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -408,6 +414,14 @@
 				9459CF772756548B0031E6F7 /* PostView.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9459CF812756746C0031E6F7 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF7F275674670031E6F7 /* PostDataRepository.swift */,
+			);
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -564,6 +578,7 @@
 				9459CF7A27565D1D0031E6F7 /* Post.swift in Sources */,
 				9459CF1427552EA60031E6F7 /* PasswordResetView.swift in Sources */,
 				9459CF1F275535E20031E6F7 /* ToggleCheckbox.swift in Sources */,
+				9459CF83275674F30031E6F7 /* PostAPIService.swift in Sources */,
 				9459CF1027552E960031E6F7 /* SignUpView.swift in Sources */,
 				9459CF572755AF550031E6F7 /* AuthenticationAPIService.swift in Sources */,
 				9459CF1227552E9C0031E6F7 /* SignInView.swift in Sources */,
@@ -583,6 +598,7 @@
 				9459CF1B2755335B0031E6F7 /* LoginTextInput.swift in Sources */,
 				9459CF76275654860031E6F7 /* PostStackView.swift in Sources */,
 				9459CF2127553B470031E6F7 /* ConfirmButton.swift in Sources */,
+				9459CF80275674670031E6F7 /* PostDataRepository.swift in Sources */,
 				9459CEE127552DBC0031E6F7 /* LegitGrailsApp.swift in Sources */,
 				9459CF782756548B0031E6F7 /* PostView.swift in Sources */,
 				9459CF4027559C420031E6F7 /* SignInViewFormFields.swift in Sources */,

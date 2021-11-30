@@ -13,15 +13,30 @@ struct PostStackView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
+            
             Text("All activity")
                 .font(.title2)
                 .padding()
             
-            ForEach(0...3, id: \.self) { _ in
-                PostView(post: modelData.post)
+            if modelData.posts.isEmpty {
+                HStack {
+                    Spacer()
+                    
+                    ActivityIndicator(isAnimating: true)
+
+                    Spacer()
+                }
+            }
+            
+            ForEach(modelData.posts, id: \.self) { post in
+                PostView(post: post)
             }
             .padding(.horizontal)
         }
+        .onAppear {
+            modelData.onAppear()
+        }
+        
     }
 }
 
