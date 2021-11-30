@@ -55,6 +55,8 @@
 		9459CF7E275665030031E6F7 /* LinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF7D275665030031E6F7 /* LinkButton.swift */; };
 		9459CF80275674670031E6F7 /* PostDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF7F275674670031E6F7 /* PostDataRepository.swift */; };
 		9459CF83275674F30031E6F7 /* PostAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF82275674F30031E6F7 /* PostAPIService.swift */; };
+		9459CF8527568A4A0031E6F7 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF8427568A4A0031E6F7 /* PostViewModel.swift */; };
+		9459CF892756A6C00031E6F7 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF882756A6C00031E6F7 /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,8 @@
 		9459CF7D275665030031E6F7 /* LinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkButton.swift; sourceTree = "<group>"; };
 		9459CF7F275674670031E6F7 /* PostDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDataRepository.swift; sourceTree = "<group>"; };
 		9459CF82275674F30031E6F7 /* PostAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAPIService.swift; sourceTree = "<group>"; };
+		9459CF8427568A4A0031E6F7 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		9459CF882756A6C00031E6F7 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +349,7 @@
 		9459CF532755AF1D0031E6F7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				9459CF872756A6B10031E6F7 /* Reachability */,
 				9459CF58275622820031E6F7 /* Authentication */,
 			);
 			path = Services;
@@ -391,7 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				9459CF6F275647150031E6F7 /* HomeViewModel.swift */,
-				9459CF7B2756617C0031E6F7 /* PostStackViewModel.swift */,
+				9459CF8627568E690031E6F7 /* Helpers */,
 			);
 			path = ChildViews;
 			sourceTree = "<group>";
@@ -422,6 +427,23 @@
 				9459CF7F275674670031E6F7 /* PostDataRepository.swift */,
 			);
 			path = HomeView;
+			sourceTree = "<group>";
+		};
+		9459CF8627568E690031E6F7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF7B2756617C0031E6F7 /* PostStackViewModel.swift */,
+				9459CF8427568A4A0031E6F7 /* PostViewModel.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9459CF872756A6B10031E6F7 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF882756A6C00031E6F7 /* Reachability.swift */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -566,6 +588,7 @@
 				9459CF70275647150031E6F7 /* HomeViewModel.swift in Sources */,
 				9459CF63275637FC0031E6F7 /* HomeView.swift in Sources */,
 				9459CF5B275626420031E6F7 /* DataVerificationResponse.swift in Sources */,
+				9459CF892756A6C00031E6F7 /* Reachability.swift in Sources */,
 				9459CF65275638010031E6F7 /* SearchView.swift in Sources */,
 				9459CF1D275535B00031E6F7 /* LegitGrailsLogo.swift in Sources */,
 				9459CF522755AEE50031E6F7 /* NetResponse.swift in Sources */,
@@ -598,6 +621,7 @@
 				9459CF1B2755335B0031E6F7 /* LoginTextInput.swift in Sources */,
 				9459CF76275654860031E6F7 /* PostStackView.swift in Sources */,
 				9459CF2127553B470031E6F7 /* ConfirmButton.swift in Sources */,
+				9459CF8527568A4A0031E6F7 /* PostViewModel.swift in Sources */,
 				9459CF80275674670031E6F7 /* PostDataRepository.swift in Sources */,
 				9459CEE127552DBC0031E6F7 /* LegitGrailsApp.swift in Sources */,
 				9459CF782756548B0031E6F7 /* PostView.swift in Sources */,

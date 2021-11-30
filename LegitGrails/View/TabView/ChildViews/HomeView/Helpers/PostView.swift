@@ -6,20 +6,11 @@
 //
 
 import SwiftUI
+import SPAlert
 
 struct PostView: View {
     
-    @State var post: Post
-    
-    @State var liked = false
-    
-    @State var reposted = false
-    
-    @State var editedText = ""
-    
-    @State var extended = false
-    
-    @State var lineLimit = 2
+    @StateObject var modelData: PostViewModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -27,11 +18,11 @@ struct PostView: View {
                 Circle()
                     .frame(width: 40, height: 40)
                 VStack(alignment: .leading) {
-                    Text(post.username)
+                    Text(modelData.post.username)
                         .bold()
                     HStack {
-                        Text(post.communityName)
-                        ForEach(post.tags, id: \.self) { tag in
+                        Text(modelData.post.communityName)
+                        ForEach(modelData.post.tags, id: \.self) { tag in
                             Text("•")
                             Text(tag)
                         }
@@ -41,22 +32,19 @@ struct PostView: View {
                 }
             }
             VStack(alignment: .leading, spacing: 20) {
-                Text(post.title)
+                Text(modelData.post.title)
                     .bold()
                     .font(.footnote)
                     
                 VStack(alignment: .leading) {
-                    Text(post.text)
+                    Text(modelData.post.text)
                         .font(.footnote)
-                        .lineLimit(lineLimit)
+                        .lineLimit(modelData.lineLimit)
                         .lineSpacing(6)
                     
-                    if !extended {
+                    if !modelData.extended {
                         Button {
-                            withAnimation {
-                                extended = true
-                                lineLimit = 50
-                            }
+                            modelData.extendPost()
                         } label: {
                             Text("...read more")
                                 .font(.footnote)
@@ -76,7 +64,7 @@ struct PostView: View {
             HStack(spacing: 20) {
                 HStack {
                     Image(systemName: "eye")
-                    Text("\(post.viewCountIDs.count)")
+                    Text("\(modelData.post.viewCountIDs.count)")
                         .font(.caption)
                         .fixedSize(horizontal: true, vertical: false)
 
@@ -88,15 +76,9 @@ struct PostView: View {
                 
                 HStack {
                     Button {
-                        if reposted {
-                            reposted = false
-                            post.repostIDs.remove(at: post.repostIDs.firstIndex(of: "gg")!)
-                        } else {
-                            reposted = true
-                            post.repostIDs.append("gg")
-                        }
+                        modelData.repostPressed()
                     } label: {
-                        Text("\(post.repostIDs.count)")
+                        Text("\(modelData.post.repostIDs.count)")
                             .font(.caption)
                             .fixedSize(horizontal: true, vertical: false)
 
@@ -106,11 +88,11 @@ struct PostView: View {
 
 
                 }
-                .foregroundColor(reposted ? Color("AccentColor") : .gray)
+                .foregroundColor(modelData.reposted ? Color("AccentColor") : .gray)
 
                 
                 HStack {
-                    Text("\(post.commentIDs.count)")
+                    Text("\(modelData.post.commentIDs.count)")
                         .font(.caption)
                         .fixedSize(horizontal: true, vertical: false)
                     
@@ -123,15 +105,9 @@ struct PostView: View {
                 
                 HStack {
                     Button {
-                        if liked {
-                            liked = false
-                            post.likeIDs.remove(at: post.likeIDs.firstIndex(of: "gg")!)
-                        } else {
-                            liked = true
-                            post.likeIDs.append("gg")
-                        }
+                        modelData.likePressed()
                     } label: {
-                        Text("\(post.likeIDs.count)")
+                        Text("\(modelData.post.likeIDs.count)")
                             .font(.caption)
                             .fixedSize(horizontal: true, vertical: false)
                         
@@ -139,7 +115,7 @@ struct PostView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                 }
-                .foregroundColor(liked ? Color("AccentColor") : .gray)
+                .foregroundColor(modelData.liked ? Color("AccentColor") : .gray)
             }
             
         }
@@ -150,9 +126,10 @@ struct PostView: View {
                 .stroke(Color(.systemGray6), lineWidth: 1)
         )
         .onAppear {
-            if !(post.text.count > 100) {
-                extended = true
-            }
+            modelData.onAppear()
+        }
+        .spAlert(isPresent: $modelData.alert, title: "Error", message: modelData.alertMessage, duration: 1, dismissOnTap: true, preset: .error, haptic: .error, layout: .message()) {
+            
         }
     }
 }
@@ -162,6 +139,6 @@ struct PostView_Previews: PreviewProvider {
     @State static var post = Post(ID: "", tags: ["thoughts"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: [], commentIDs: ["fd", "fds", "fdsa"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa"], viewCountIDs: ["fd", "fds", "fdsa"])
     
     static var previews: some View {
-        PostView(post: post)
+        PostView(modelData: PostViewModel(post: post, coordinator: SessionManagerObject()))
     }
 }

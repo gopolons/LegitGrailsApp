@@ -35,6 +35,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(modelData: HomeViewModel(tabCoordinator: AppTabViewModel(coordinator: SessionManagerObject())))
+        HomeView(modelData: HomeViewModel(tabCoordinator: AppTabViewModel(coordinator: SessionManagerObject()), coordinator: SessionManagerObject()))
     }
 }

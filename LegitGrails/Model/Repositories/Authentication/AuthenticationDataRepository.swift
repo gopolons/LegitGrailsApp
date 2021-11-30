@@ -23,6 +23,7 @@ protocol AuthenticationDataRepositoryProtocol {
 
 final class AuthenticationDataRepository: AuthenticationDataRepositoryProtocol {
     private var apiService: AuthenticationAPIServiceProtocol
+    private var serviceManager: Reachability
     
     func checkEmail(_ email: String, completion: @escaping (DataVerificationResponse?, AuthenticationParameterError?) -> Void) {
         let emailRegEx = "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
@@ -81,37 +82,53 @@ final class AuthenticationDataRepository: AuthenticationDataRepositoryProtocol {
     }
     
     func signUp(username: String, email: String, password: String, completion: @escaping (SessionData?, NetError?) -> Void) {
-        apiService.signUp(username: username, email: email, password: password) { response, err in
-            guard err == nil else {
-                completion(nil, err!)
-                return
+        if serviceManager.checkConnection() {
+            apiService.signUp(username: username, email: email, password: password) { response, err in
+                guard err == nil else {
+                    completion(nil, err!)
+                    return
+                }
+                completion(response, nil)
             }
-            completion(response, nil)
+        } else {
+            completion(nil, NetError.noConnection)
         }
+        
     }
     
     func signIn(email: String, password: String, completion: @escaping (SessionData?, NetError?) -> Void) {
-        apiService.signIn(email: email, password: password) { response, err in
-            guard err == nil else {
-                completion(nil, err!)
-                return
+        if serviceManager.checkConnection() {
+            apiService.signIn(email: email, password: password) { response, err in
+                guard err == nil else {
+                    completion(nil, err!)
+                    return
+                }
+                completion(response, nil)
             }
-            completion(response, nil)
+        } else {
+            completion(nil, NetError.noConnection)
         }
+        
     }
     
     func restorePasswordWithEmail(_ email: String, completion: @escaping (NetResponse?, NetError?) -> Void) {
-        apiService.restorePasswordWithEmail(email) { response, err in
-            guard err == nil else {
-                completion(nil, err!)
-                return
+        if serviceManager.checkConnection() {
+            apiService.restorePasswordWithEmail(email) { response, err in
+                guard err == nil else {
+                    completion(nil, err!)
+                    return
+                }
+                completion(response, nil)
             }
-            completion(response, nil)
+        } else {
+            completion(nil, NetError.noConnection)
         }
+
     }
     
     init(apiService: AuthenticationAPIServiceProtocol = AuthenticationApiService()) {
         self.apiService = apiService
+        self.serviceManager = Reachability()
     }
     
 }

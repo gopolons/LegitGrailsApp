@@ -9,6 +9,7 @@ import SwiftUI
 
 final class SessionManagerObject: ObservableObject {
     @Published var authToken = "test"
+    @Published var userID = "test"
     @Published var screenHeight: Double
     private var _signUpVM: SignUpViewModel!
     var signUpVM: SignUpViewModel {

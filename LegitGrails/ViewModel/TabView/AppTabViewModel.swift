@@ -18,7 +18,7 @@ final class AppTabViewModel: ObservableObject {
     
     init(coordinator: SessionManagerObject) {
         self.coordinator = coordinator
-        self._homeVM = HomeViewModel(tabCoordinator: self)
+        self._homeVM = HomeViewModel(tabCoordinator: self, coordinator: coordinator)
 
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SPAlert
 
 struct PostStackView: View {
     
@@ -18,7 +19,7 @@ struct PostStackView: View {
                 .font(.title2)
                 .padding()
             
-            if modelData.posts.isEmpty {
+            if modelData.posts.isEmpty && !modelData.error {
                 HStack {
                     Spacer()
                     
@@ -28,13 +29,29 @@ struct PostStackView: View {
                 }
             }
             
+            if modelData.error {
+                HStack {
+                    Spacer()
+                    Button {
+                        modelData.onAppear()
+                    } label: {
+                        Text("Retry")
+                        Image(systemName: "arrow.triangle.2.circlepath.circle.fill")
+                    }
+                    Spacer()
+                }
+            }
+            
             ForEach(modelData.posts, id: \.self) { post in
-                PostView(post: post)
+                PostView(modelData: PostViewModel(post: post, coordinator: modelData.getCoordinator()))
             }
             .padding(.horizontal)
         }
         .onAppear {
             modelData.onAppear()
+        }
+        .spAlert(isPresent: $modelData.alert, title: "Error", message: modelData.alertMessage, duration: 1, dismissOnTap: true, preset: modelData.alertPreset, haptic: modelData.alertHaptic, layout: .message()) {
+            
         }
         
     }
@@ -42,6 +59,6 @@ struct PostStackView: View {
 
 struct PostStackView_Previews: PreviewProvider {
     static var previews: some View {
-        PostStackView(modelData: PostStackViewModel())
+        PostStackView(modelData: PostStackViewModel(coordinator: SessionManagerObject()))
     }
 }

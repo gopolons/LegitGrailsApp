@@ -8,6 +8,7 @@
 import Foundation
 
 final class HomeViewModel: ObservableObject {
+    private var coordinator: SessionManagerObject
     private var tabCoordinator: AppTabViewModel
     private var _postStackVM: PostStackViewModel!
     var postStackVM: PostStackViewModel {
@@ -18,8 +19,10 @@ final class HomeViewModel: ObservableObject {
         self.tabCoordinator.selection = navigateTo
     }
     
-    init(tabCoordinator: AppTabViewModel) {
-        self._postStackVM = PostStackViewModel()
+    init(tabCoordinator: AppTabViewModel, coordinator: SessionManagerObject) {
         self.tabCoordinator = tabCoordinator
+        self.coordinator = coordinator
+        self._postStackVM = PostStackViewModel(coordinator: coordinator)
+
     }
 }
