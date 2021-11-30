@@ -22,7 +22,7 @@ protocol AuthenticationDataRepositoryProtocol {
 }
 
 final class AuthenticationDataRepository: AuthenticationDataRepositoryProtocol {
-//    private var apiService: AuthenticationAPIServiceProtocol
+    private var apiService: AuthenticationAPIServiceProtocol
     
     func checkEmail(_ email: String, completion: @escaping (DataVerificationResponse?, AuthenticationParameterError?) -> Void) {
         let emailRegEx = "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
@@ -81,23 +81,37 @@ final class AuthenticationDataRepository: AuthenticationDataRepositoryProtocol {
     }
     
     func signUp(username: String, email: String, password: String, completion: @escaping (SessionData?, NetError?) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            completion(SessionData(authenticationToken: "success"), nil)
+        apiService.signUp(username: username, email: email, password: password) { response, err in
+            guard err == nil else {
+                completion(nil, err!)
+                return
+            }
+            completion(response, nil)
         }
     }
     
     func signIn(email: String, password: String, completion: @escaping (SessionData?, NetError?) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            completion(SessionData(authenticationToken: "success"), nil)
+        apiService.signIn(email: email, password: password) { response, err in
+            guard err == nil else {
+                completion(nil, err!)
+                return
+            }
+            completion(response, nil)
         }
     }
     
     func restorePasswordWithEmail(_ email: String, completion: @escaping (NetResponse?, NetError?) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            completion(NetResponse.success, nil)
+        apiService.restorePasswordWithEmail(email) { response, err in
+            guard err == nil else {
+                completion(nil, err!)
+                return
+            }
+            completion(response, nil)
         }
     }
     
-    
+    init(apiService: AuthenticationAPIServiceProtocol = AuthenticationApiService()) {
+        self.apiService = apiService
+    }
     
 }

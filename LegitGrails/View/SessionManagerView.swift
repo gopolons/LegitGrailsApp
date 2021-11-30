@@ -15,7 +15,7 @@ struct SessionManagerView: View {
         if coordinator.authToken == "" {
             SignUpView(modelData: coordinator.signUpVM)
         } else {
-            HomeView()
+            AppTabView(modelData: coordinator.appTabVM)
         }
     }
 }
