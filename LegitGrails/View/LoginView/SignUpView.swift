@@ -76,10 +76,12 @@ struct SignUpView: View {
                     .padding(.top)
                     
                 }
-                .padding(.vertical, UIScreen.screenHeight <= 736 ? 10 : 60)
+                .padding(.vertical, UIScreen.screenHeight <= 736 ? 10 : 20)
                 
 
                 ConfirmButton(text: "Create account") {
+                    self.focusedFields = SignUpFormFields.none
+                    hideKeyboard()
                     modelData.signUp()
                 }
                 

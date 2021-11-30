@@ -41,7 +41,6 @@ final class PasswordResetViewModel: ObservableObject {
         isValidData()
         
         if emailError == "" {
-            self.email = ""
             self.restorePasswordAlertTitle = "Success!"
             self.restorePasswordAlertText = "Check your email for the password restoration link"
             self.restorePasswordAlertHaptic = .success

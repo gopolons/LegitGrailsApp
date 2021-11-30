@@ -65,6 +65,8 @@ struct SignInView: View {
                 
                 VStack {
                     ConfirmButton(text: "Log in") {
+                        self.focusedFields = SignInFormFields.none
+                        hideKeyboard()
                         modelData.signIn()
                     }
                     

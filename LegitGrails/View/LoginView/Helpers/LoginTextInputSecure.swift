@@ -23,10 +23,16 @@ struct LoginTextInputSecure: View {
                 SecureField(placeholder, text: $input)
                     .padding(.vertical, UIScreen.screenHeight <= 736.0 ? 10 : 15)
                     .onChange(of: error) { err in
-                        
-                        withAnimation {
-                            hint = false
+                        if err != "" {
+                            withAnimation {
+                                hint = true
+                            }
+                        } else {
+                            withAnimation {
+                                hint = false
+                            }
                         }
+                        
                     }
                     
                     
@@ -38,6 +44,7 @@ struct LoginTextInputSecure: View {
                             .multilineTextAlignment(.leading)
                             .font(.footnote)
                             .foregroundColor(.red)
+                            .fixedSize(horizontal: false, vertical: true)
                         
                         Spacer()
                     }

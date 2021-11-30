@@ -23,12 +23,14 @@ struct PasswordResetView: View {
                     }
                 
                 ConfirmButton(text: "Reset password") {
+                    hideKeyboard()
                     modelData.restorePassword()
                 }
             }
             .navigationTitle("")
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
+
         }
         .spAlert(isPresent: $modelData.restorePasswordAlert, title: modelData.restorePasswordAlertTitle, message: modelData.restorePasswordAlertText, duration: 1, dismissOnTap: true, preset: modelData.restorePasswordAlertPreset, haptic: modelData.restorePasswordAlertHaptic, layout: .message()) {
             
