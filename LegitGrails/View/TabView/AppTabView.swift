@@ -13,7 +13,7 @@ struct AppTabView: View {
     
     var body: some View {
         TabView(selection: $modelData.selection) {
-            HomeView()
+            HomeView(modelData: modelData.homeVM)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")

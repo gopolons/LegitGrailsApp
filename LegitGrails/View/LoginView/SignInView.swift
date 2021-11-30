@@ -95,7 +95,7 @@ struct SignInView: View {
                                 ToolbarItem(placement: .principal) {
                                     Image("LegitGrails")
                                         .resizable()
-                                        .frame(width: 70, height: 50)
+                                        .frame(width: 50, height: 40)
                                 }
                             }
 

@@ -46,6 +46,13 @@
 		9459CF67275638070031E6F7 /* AuthenticateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF66275638070031E6F7 /* AuthenticateView.swift */; };
 		9459CF692756380E0031E6F7 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF682756380E0031E6F7 /* ProfileView.swift */; };
 		9459CF6C275638860031E6F7 /* AppTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF6B275638860031E6F7 /* AppTabViewModel.swift */; };
+		9459CF70275647150031E6F7 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF6F275647150031E6F7 /* HomeViewModel.swift */; };
+		9459CF7427564B060031E6F7 /* HomeLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF7327564B060031E6F7 /* HomeLinks.swift */; };
+		9459CF76275654860031E6F7 /* PostStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF75275654860031E6F7 /* PostStackView.swift */; };
+		9459CF782756548B0031E6F7 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF772756548B0031E6F7 /* PostView.swift */; };
+		9459CF7A27565D1D0031E6F7 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF7927565D1C0031E6F7 /* Post.swift */; };
+		9459CF7C2756617C0031E6F7 /* PostStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF7B2756617C0031E6F7 /* PostStackViewModel.swift */; };
+		9459CF7E275665030031E6F7 /* LinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF7D275665030031E6F7 /* LinkButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +113,13 @@
 		9459CF66275638070031E6F7 /* AuthenticateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateView.swift; sourceTree = "<group>"; };
 		9459CF682756380E0031E6F7 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		9459CF6B275638860031E6F7 /* AppTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabViewModel.swift; sourceTree = "<group>"; };
+		9459CF6F275647150031E6F7 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		9459CF7327564B060031E6F7 /* HomeLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLinks.swift; sourceTree = "<group>"; };
+		9459CF75275654860031E6F7 /* PostStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStackView.swift; sourceTree = "<group>"; };
+		9459CF772756548B0031E6F7 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		9459CF7927565D1C0031E6F7 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		9459CF7B2756617C0031E6F7 /* PostStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStackViewModel.swift; sourceTree = "<group>"; };
+		9459CF7D275665030031E6F7 /* LinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				9459CF472755ACDD0031E6F7 /* SessionData.swift */,
+				9459CF7927565D1C0031E6F7 /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -350,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				9459CF6B275638860031E6F7 /* AppTabViewModel.swift */,
+				9459CF6E27563BFA0031E6F7 /* ChildViews */,
 			);
 			path = TabView;
 			sourceTree = "<group>";
@@ -357,12 +373,41 @@
 		9459CF6D27563B320031E6F7 /* ChildViews */ = {
 			isa = PBXGroup;
 			children = (
-				9459CF62275637FC0031E6F7 /* HomeView.swift */,
+				9459CF7127564A980031E6F7 /* HomeView */,
 				9459CF64275638010031E6F7 /* SearchView.swift */,
 				9459CF66275638070031E6F7 /* AuthenticateView.swift */,
 				9459CF682756380E0031E6F7 /* ProfileView.swift */,
 			);
 			path = ChildViews;
+			sourceTree = "<group>";
+		};
+		9459CF6E27563BFA0031E6F7 /* ChildViews */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF6F275647150031E6F7 /* HomeViewModel.swift */,
+				9459CF7B2756617C0031E6F7 /* PostStackViewModel.swift */,
+			);
+			path = ChildViews;
+			sourceTree = "<group>";
+		};
+		9459CF7127564A980031E6F7 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF62275637FC0031E6F7 /* HomeView.swift */,
+				9459CF7227564AA50031E6F7 /* Helpers */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		9459CF7227564AA50031E6F7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF7327564B060031E6F7 /* HomeLinks.swift */,
+				9459CF7D275665030031E6F7 /* LinkButton.swift */,
+				9459CF75275654860031E6F7 /* PostStackView.swift */,
+				9459CF772756548B0031E6F7 /* PostView.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -504,6 +549,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9459CF482755ACDD0031E6F7 /* SessionData.swift in Sources */,
+				9459CF70275647150031E6F7 /* HomeViewModel.swift in Sources */,
 				9459CF63275637FC0031E6F7 /* HomeView.swift in Sources */,
 				9459CF5B275626420031E6F7 /* DataVerificationResponse.swift in Sources */,
 				9459CF65275638010031E6F7 /* SearchView.swift in Sources */,
@@ -515,6 +561,7 @@
 				9459CF2E27555CE00031E6F7 /* AppTabView.swift in Sources */,
 				9459CF2C27554E290031E6F7 /* SessionManagerObject.swift in Sources */,
 				9459CF462755AB850031E6F7 /* AuthenticationParameterError.swift in Sources */,
+				9459CF7A27565D1D0031E6F7 /* Post.swift in Sources */,
 				9459CF1427552EA60031E6F7 /* PasswordResetView.swift in Sources */,
 				9459CF1F275535E20031E6F7 /* ToggleCheckbox.swift in Sources */,
 				9459CF1027552E960031E6F7 /* SignUpView.swift in Sources */,
@@ -528,13 +575,18 @@
 				9459CF2A2755482F0031E6F7 /* PasswordResetViewModel.swift in Sources */,
 				9459CF3E27559A8D0031E6F7 /* ViewExtensions.swift in Sources */,
 				9459CF1727552F570031E6F7 /* SignUpViewModel.swift in Sources */,
+				9459CF7E275665030031E6F7 /* LinkButton.swift in Sources */,
+				9459CF7427564B060031E6F7 /* HomeLinks.swift in Sources */,
 				9459CF67275638070031E6F7 /* AuthenticateView.swift in Sources */,
 				9459CF26275540300031E6F7 /* SignInViewModel.swift in Sources */,
 				9459CF3C275597D10031E6F7 /* SignUpViewFormFields.swift in Sources */,
 				9459CF1B2755335B0031E6F7 /* LoginTextInput.swift in Sources */,
+				9459CF76275654860031E6F7 /* PostStackView.swift in Sources */,
 				9459CF2127553B470031E6F7 /* ConfirmButton.swift in Sources */,
 				9459CEE127552DBC0031E6F7 /* LegitGrailsApp.swift in Sources */,
+				9459CF782756548B0031E6F7 /* PostView.swift in Sources */,
 				9459CF4027559C420031E6F7 /* SignInViewFormFields.swift in Sources */,
+				9459CF7C2756617C0031E6F7 /* PostStackViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
