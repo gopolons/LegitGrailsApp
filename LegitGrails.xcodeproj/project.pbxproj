@@ -27,13 +27,18 @@
 		9459CF2A2755482F0031E6F7 /* PasswordResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF292755482F0031E6F7 /* PasswordResetViewModel.swift */; };
 		9459CF2C27554E290031E6F7 /* SessionManagerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF2B27554E290031E6F7 /* SessionManagerObject.swift */; };
 		9459CF2E27555CE00031E6F7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF2D27555CE00031E6F7 /* HomeView.swift */; };
-		9459CF312755670D0031E6F7 /* LoginUIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF302755670D0031E6F7 /* LoginUIError.swift */; };
 		9459CF3427556EBA0031E6F7 /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = 9459CF3327556EBA0031E6F7 /* SPAlert */; };
 		9459CF36275584FD0031E6F7 /* LoginTextInputSecure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF35275584FD0031E6F7 /* LoginTextInputSecure.swift */; };
 		9459CF392755976B0031E6F7 /* Focuser in Frameworks */ = {isa = PBXBuildFile; productRef = 9459CF382755976B0031E6F7 /* Focuser */; };
 		9459CF3C275597D10031E6F7 /* SignUpViewFormFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF3B275597D10031E6F7 /* SignUpViewFormFields.swift */; };
 		9459CF3E27559A8D0031E6F7 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF3D27559A8D0031E6F7 /* ViewExtensions.swift */; };
 		9459CF4027559C420031E6F7 /* SignInViewFormFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF3F27559C420031E6F7 /* SignInViewFormFields.swift */; };
+		9459CF442755AB180031E6F7 /* AuthenticationDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF432755AB180031E6F7 /* AuthenticationDataRepository.swift */; };
+		9459CF462755AB850031E6F7 /* AuthenticationParameterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF452755AB850031E6F7 /* AuthenticationParameterError.swift */; };
+		9459CF482755ACDD0031E6F7 /* SessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF472755ACDD0031E6F7 /* SessionData.swift */; };
+		9459CF4A2755AD0F0031E6F7 /* NetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF492755AD0F0031E6F7 /* NetError.swift */; };
+		9459CF522755AEE50031E6F7 /* NetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF512755AEE50031E6F7 /* NetResponse.swift */; };
+		9459CF572755AF550031E6F7 /* AuthenticationAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF562755AF550031E6F7 /* AuthenticationAPIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,11 +82,16 @@
 		9459CF292755482F0031E6F7 /* PasswordResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewModel.swift; sourceTree = "<group>"; };
 		9459CF2B27554E290031E6F7 /* SessionManagerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManagerObject.swift; sourceTree = "<group>"; };
 		9459CF2D27555CE00031E6F7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		9459CF302755670D0031E6F7 /* LoginUIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUIError.swift; sourceTree = "<group>"; };
 		9459CF35275584FD0031E6F7 /* LoginTextInputSecure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextInputSecure.swift; sourceTree = "<group>"; };
 		9459CF3B275597D10031E6F7 /* SignUpViewFormFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewFormFields.swift; sourceTree = "<group>"; };
 		9459CF3D27559A8D0031E6F7 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		9459CF3F27559C420031E6F7 /* SignInViewFormFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewFormFields.swift; sourceTree = "<group>"; };
+		9459CF432755AB180031E6F7 /* AuthenticationDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDataRepository.swift; sourceTree = "<group>"; };
+		9459CF452755AB850031E6F7 /* AuthenticationParameterError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationParameterError.swift; sourceTree = "<group>"; };
+		9459CF472755ACDD0031E6F7 /* SessionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionData.swift; sourceTree = "<group>"; };
+		9459CF492755AD0F0031E6F7 /* NetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetError.swift; sourceTree = "<group>"; };
+		9459CF512755AEE50031E6F7 /* NetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetResponse.swift; sourceTree = "<group>"; };
+		9459CF562755AF550031E6F7 /* AuthenticationAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +183,11 @@
 		9459CF0A27552DCB0031E6F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9459CF302755670D0031E6F7 /* LoginUIError.swift */,
+				9459CF532755AF1D0031E6F7 /* Services */,
+				9459CF4D2755AD8A0031E6F7 /* Repositories */,
+				9459CF4C2755AD820031E6F7 /* Models */,
+				9459CF502755AED50031E6F7 /* Responses */,
+				9459CF4B2755AD6B0031E6F7 /* Errors */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,6 +269,47 @@
 				9459CF3F27559C420031E6F7 /* SignInViewFormFields.swift */,
 			);
 			path = FormFields;
+			sourceTree = "<group>";
+		};
+		9459CF4B2755AD6B0031E6F7 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF452755AB850031E6F7 /* AuthenticationParameterError.swift */,
+				9459CF492755AD0F0031E6F7 /* NetError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		9459CF4C2755AD820031E6F7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF472755ACDD0031E6F7 /* SessionData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9459CF4D2755AD8A0031E6F7 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF432755AB180031E6F7 /* AuthenticationDataRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		9459CF502755AED50031E6F7 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF512755AEE50031E6F7 /* NetResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		9459CF532755AF1D0031E6F7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9459CF562755AF550031E6F7 /* AuthenticationAPIService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,16 +450,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9459CF482755ACDD0031E6F7 /* SessionData.swift in Sources */,
 				9459CF1D275535B00031E6F7 /* LegitGrailsLogo.swift in Sources */,
+				9459CF522755AEE50031E6F7 /* NetResponse.swift in Sources */,
 				9459CF36275584FD0031E6F7 /* LoginTextInputSecure.swift in Sources */,
 				9459CF2427553C4A0031E6F7 /* UIScreenExtensions.swift in Sources */,
 				9459CEE327552DBC0031E6F7 /* SessionManagerView.swift in Sources */,
 				9459CF2E27555CE00031E6F7 /* HomeView.swift in Sources */,
 				9459CF2C27554E290031E6F7 /* SessionManagerObject.swift in Sources */,
+				9459CF462755AB850031E6F7 /* AuthenticationParameterError.swift in Sources */,
 				9459CF1427552EA60031E6F7 /* PasswordResetView.swift in Sources */,
 				9459CF1F275535E20031E6F7 /* ToggleCheckbox.swift in Sources */,
 				9459CF1027552E960031E6F7 /* SignUpView.swift in Sources */,
+				9459CF572755AF550031E6F7 /* AuthenticationAPIService.swift in Sources */,
 				9459CF1227552E9C0031E6F7 /* SignInView.swift in Sources */,
+				9459CF442755AB180031E6F7 /* AuthenticationDataRepository.swift in Sources */,
+				9459CF4A2755AD0F0031E6F7 /* NetError.swift in Sources */,
 				9459CF2A2755482F0031E6F7 /* PasswordResetViewModel.swift in Sources */,
 				9459CF3E27559A8D0031E6F7 /* ViewExtensions.swift in Sources */,
 				9459CF1727552F570031E6F7 /* SignUpViewModel.swift in Sources */,
@@ -412,7 +473,6 @@
 				9459CF3C275597D10031E6F7 /* SignUpViewFormFields.swift in Sources */,
 				9459CF1B2755335B0031E6F7 /* LoginTextInput.swift in Sources */,
 				9459CF2127553B470031E6F7 /* ConfirmButton.swift in Sources */,
-				9459CF312755670D0031E6F7 /* LoginUIError.swift in Sources */,
 				9459CEE127552DBC0031E6F7 /* LegitGrailsApp.swift in Sources */,
 				9459CF4027559C420031E6F7 /* SignInViewFormFields.swift in Sources */,
 			);

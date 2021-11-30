@@ -23,7 +23,6 @@ final class SignUpViewModel: ObservableObject {
     @Published var tncError = false
     @Published var signUpError = false
     @Published var signUpErrorMsg = ""
-    @Published var errors: [LoginUIError] = []
     
 // MARK: Methods
     func signIn() {
