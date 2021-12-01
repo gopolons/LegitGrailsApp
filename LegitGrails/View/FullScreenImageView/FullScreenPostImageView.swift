@@ -48,8 +48,9 @@ struct FullScreenPostImageView: View {
                             .foregroundColor(.white)
                     }
                     .buttonStyle(PlainButtonStyle())
-                    .padding()
-                    .padding(.top, 10)
+                    .padding(.top, 50)
+                    .padding(.trailing, 30)
+
                 }
                 Spacer()
             }
