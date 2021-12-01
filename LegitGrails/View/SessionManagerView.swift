@@ -7,15 +7,30 @@
 
 import SwiftUI
 
+// MARK: AppState
+enum AppState {
+    case login
+    case tabView
+}
+
 struct SessionManagerView: View {
     
     @ObservedObject var coordinator: SessionManagerObject
     
     var body: some View {
-        if coordinator.authToken == "" {
+        switch coordinator.appState {
+        case .login:
             SignUpView(modelData: coordinator.signUpVM)
-        } else {
-            AppTabView(modelData: coordinator.appTabVM)
+        case .tabView:
+            ZStack {
+                AppTabView(modelData: coordinator.appTabVM)
+                    .zIndex(1)
+
+                if coordinator.postImagesView {
+                    FullScreenPostImageView(modelData: coordinator.fullScreenPostImgVM)
+                        .zIndex(2)
+                }
+            }
         }
     }
 }

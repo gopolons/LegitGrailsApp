@@ -24,14 +24,14 @@ final class PostStackViewModel: ObservableObject {
             guard err == nil else {
                 switch err {
                 case .noConnection:
-                    self.alertMessage = "No connection, please try again later"
+                    self.alertMessage = err!.description
                     self.alertPreset = .error
                     self.alertHaptic = .error
                     self.alert.toggle()
                     self.error = true
                     return
                 case .invalidRequest:
-                    self.alertMessage = "Invalid request, please try again later"
+                    self.alertMessage = err!.description
                     self.alertPreset = .error
                     self.alertHaptic = .error
                     self.alert.toggle()

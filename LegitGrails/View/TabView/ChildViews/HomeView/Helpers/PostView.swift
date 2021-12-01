@@ -59,6 +59,28 @@ struct PostView: View {
 
                     }
                 }
+                if !modelData.post.images.isEmpty {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(modelData.post.images, id: \.self) { img in
+                                Button {
+                                    modelData.openImage(selectedImg: img)
+                                } label: {
+                                    Image(img)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 250, height: 200)
+                                        .clipped()
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
+                        }
+                        
+                        
+                    }
+                    .frame(height: 200)
+                }
+
             }
             
             HStack(spacing: 20) {
@@ -136,7 +158,7 @@ struct PostView: View {
 
 struct PostView_Previews: PreviewProvider {
     
-    @State static var post = Post(ID: "", tags: ["thoughts"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: [], commentIDs: ["fd", "fds", "fdsa"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa"], viewCountIDs: ["fd", "fds", "fdsa"])
+    @State static var post = Post(ID: "", tags: ["thoughts"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: ["", ""], commentIDs: ["fd", "fds", "fdsa"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa"], viewCountIDs: ["fd", "fds", "fdsa"])
     
     static var previews: some View {
         PostView(modelData: PostViewModel(post: post, coordinator: SessionManagerObject()))

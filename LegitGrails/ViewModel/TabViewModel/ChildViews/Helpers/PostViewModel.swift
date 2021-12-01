@@ -35,6 +35,10 @@ final class PostViewModel: ObservableObject {
         
     }
     
+    func openImage(selectedImg: String) {
+        coordinator.openPostImage(selected: selectedImg, images: post.images)
+    }
+    
     func extendPost() {
         withAnimation {
             extended = true

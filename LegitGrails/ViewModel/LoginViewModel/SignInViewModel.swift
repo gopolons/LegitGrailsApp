@@ -77,6 +77,7 @@ final class SignInViewModel: ObservableObject {
                 withAnimation {
                     self.isLoading.toggle()
                     self.coordinator.authToken = response!.authenticationToken
+                    self.coordinator.appState = .tabView
                 }
             }
         } else {

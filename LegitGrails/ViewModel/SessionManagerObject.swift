@@ -8,9 +8,14 @@
 import SwiftUI
 
 final class SessionManagerObject: ObservableObject {
+    @Published var postImages: [String] = []
+    @Published var openedImage = ""
     @Published var authToken = "test"
     @Published var userID = "test"
     @Published var screenHeight: Double
+    @Published var appState: AppState
+    @Published var postImagesView = false
+    
     private var _signUpVM: SignUpViewModel!
     var signUpVM: SignUpViewModel {
         return _signUpVM
@@ -20,10 +25,40 @@ final class SessionManagerObject: ObservableObject {
         return _appTabVM
     }
     
+    private var _fullScreenPostImgVM: FullScreenPostImageViewModel!
+    var fullScreenPostImgVM: FullScreenPostImageViewModel {
+        return _fullScreenPostImgVM
+    }
+    
+    private func passPostImages() {
+        fullScreenPostImgVM.images = postImages
+        fullScreenPostImgVM.openedImage = openedImage
+    }
+    
+    func openPostImage(selected: String, images: [String]) {
+        withAnimation {
+            postImagesView.toggle()
+            postImages = images
+            openedImage = selected
+            passPostImages()
+        }
+    }
+    
+    func dismissPostImage() {
+        withAnimation {
+            postImagesView.toggle()
+            postImages = []
+            openedImage = ""
+        }
+    }
+
+    
     
     init() {
         self.screenHeight = UIScreen.screenHeight
+        self.appState = AppState.tabView
         self._signUpVM = SignUpViewModel(coordinator: self)
         self._appTabVM = AppTabViewModel(coordinator: self)
+        self._fullScreenPostImgVM = FullScreenPostImageViewModel(coordinator: self)
     }
 }

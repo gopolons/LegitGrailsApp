@@ -22,7 +22,6 @@ final class HomeViewModel: ObservableObject {
     init(tabCoordinator: AppTabViewModel, coordinator: SessionManagerObject) {
         self.tabCoordinator = tabCoordinator
         self.coordinator = coordinator
-        self._postStackVM = PostStackViewModel(coordinator: coordinator)
-
+        self._postStackVM = PostStackViewModel(coordinator: coordinator) 
     }
 }

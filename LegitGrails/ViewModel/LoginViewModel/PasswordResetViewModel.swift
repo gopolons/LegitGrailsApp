@@ -55,7 +55,7 @@ final class PasswordResetViewModel: ObservableObject {
                             self.isLoading.toggle()
                         }
                         self.restorePasswordAlertTitle = "Error!"
-                        self.restorePasswordAlertText = "Invalid request, try again later"
+                        self.restorePasswordAlertText = err!.description
                         self.restorePasswordAlertHaptic = .error
                         self.restorePasswordAlertPreset = .error
                         self.restorePasswordAlert = true
@@ -65,7 +65,7 @@ final class PasswordResetViewModel: ObservableObject {
                             self.isLoading.toggle()
                         }
                         self.restorePasswordAlertTitle = "Error!"
-                        self.restorePasswordAlertText = "No connection, try again later"
+                        self.restorePasswordAlertText = err!.description
                         self.restorePasswordAlertHaptic = .error
                         self.restorePasswordAlertPreset = .error
                         self.restorePasswordAlert = true
