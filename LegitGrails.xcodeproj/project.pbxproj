@@ -61,6 +61,12 @@
 		9459CF8E2756C9160031E6F7 /* FullScreenPostImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF8D2756C9160031E6F7 /* FullScreenPostImageViewModel.swift */; };
 		9459CF922756F3C20031E6F7 /* ZoomableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF912756F3C20031E6F7 /* ZoomableImageView.swift */; };
 		9459CF952756F8890031E6F7 /* DraggableModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9459CF942756F8890031E6F7 /* DraggableModifier.swift */; };
+		94AA22372757AB8600937B07 /* NoFeedbackButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA22362757AB8600937B07 /* NoFeedbackButtonStyle.swift */; };
+		94AA223A2757B21600937B07 /* FullScreenPostViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA22392757B21600937B07 /* FullScreenPostViewCoordinator.swift */; };
+		94AA223C2757B25000937B07 /* FullScreenGenericPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA223B2757B25000937B07 /* FullScreenGenericPostView.swift */; };
+		94AA22412757B38E00937B07 /* FullScreenGenericPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA22402757B38E00937B07 /* FullScreenGenericPostViewModel.swift */; };
+		94AA224427580C6500937B07 /* FullScreenGenericPostDebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA224327580C6500937B07 /* FullScreenGenericPostDebugViewModel.swift */; };
+		94AA22462758267A00937B07 /* HapticModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA22452758267A00937B07 /* HapticModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +142,12 @@
 		9459CF8D2756C9160031E6F7 /* FullScreenPostImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenPostImageViewModel.swift; sourceTree = "<group>"; };
 		9459CF912756F3C20031E6F7 /* ZoomableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableImageView.swift; sourceTree = "<group>"; };
 		9459CF942756F8890031E6F7 /* DraggableModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableModifier.swift; sourceTree = "<group>"; };
+		94AA22362757AB8600937B07 /* NoFeedbackButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFeedbackButtonStyle.swift; sourceTree = "<group>"; };
+		94AA22392757B21600937B07 /* FullScreenPostViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenPostViewCoordinator.swift; sourceTree = "<group>"; };
+		94AA223B2757B25000937B07 /* FullScreenGenericPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenGenericPostView.swift; sourceTree = "<group>"; };
+		94AA22402757B38E00937B07 /* FullScreenGenericPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenGenericPostViewModel.swift; sourceTree = "<group>"; };
+		94AA224327580C6500937B07 /* FullScreenGenericPostDebugViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenGenericPostDebugViewModel.swift; sourceTree = "<group>"; };
+		94AA22452758267A00937B07 /* HapticModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				9459CEE227552DBC0031E6F7 /* SessionManagerView.swift */,
+				94AA22382757B1DD00937B07 /* FullScreenPostView */,
 				9459CF8F2756D8C60031E6F7 /* FullScreenImageView */,
 				9459CF1527552EAB0031E6F7 /* LoginView */,
 				9459CF2F27555CE90031E6F7 /* TabView */,
@@ -252,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				9459CF2B27554E290031E6F7 /* SessionManagerObject.swift */,
+				94AA223F2757B37C00937B07 /* FullScreenPostViewModel */,
 				9459CF902756D8E00031E6F7 /* FullScreenImageViewModel */,
 				9459CF1827552F630031E6F7 /* LoginViewModel */,
 				9459CF6A2756386B0031E6F7 /* TabViewModel */,
@@ -299,6 +313,8 @@
 			children = (
 				9459CF2327553C4A0031E6F7 /* UIScreenExtensions.swift */,
 				9459CF3D27559A8D0031E6F7 /* ViewExtensions.swift */,
+				94AA22362757AB8600937B07 /* NoFeedbackButtonStyle.swift */,
+				94AA22452758267A00937B07 /* HapticModifier.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -498,6 +514,32 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		94AA22382757B1DD00937B07 /* FullScreenPostView */ = {
+			isa = PBXGroup;
+			children = (
+				94AA22392757B21600937B07 /* FullScreenPostViewCoordinator.swift */,
+				94AA223B2757B25000937B07 /* FullScreenGenericPostView.swift */,
+			);
+			path = FullScreenPostView;
+			sourceTree = "<group>";
+		};
+		94AA223F2757B37C00937B07 /* FullScreenPostViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				94AA22402757B38E00937B07 /* FullScreenGenericPostViewModel.swift */,
+				94AA224227580C3F00937B07 /* Debug */,
+			);
+			path = FullScreenPostViewModel;
+			sourceTree = "<group>";
+		};
+		94AA224227580C3F00937B07 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				94AA224327580C6500937B07 /* FullScreenGenericPostDebugViewModel.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -642,6 +684,7 @@
 				9459CF8E2756C9160031E6F7 /* FullScreenPostImageViewModel.swift in Sources */,
 				9459CF5B275626420031E6F7 /* DataVerificationResponse.swift in Sources */,
 				9459CF892756A6C00031E6F7 /* Reachability.swift in Sources */,
+				94AA223A2757B21600937B07 /* FullScreenPostViewCoordinator.swift in Sources */,
 				9459CF65275638010031E6F7 /* SearchView.swift in Sources */,
 				9459CF1D275535B00031E6F7 /* LegitGrailsLogo.swift in Sources */,
 				9459CF522755AEE50031E6F7 /* NetResponse.swift in Sources */,
@@ -656,6 +699,7 @@
 				9459CF922756F3C20031E6F7 /* ZoomableImageView.swift in Sources */,
 				9459CF1F275535E20031E6F7 /* ToggleCheckbox.swift in Sources */,
 				9459CF83275674F30031E6F7 /* PostAPIService.swift in Sources */,
+				94AA224427580C6500937B07 /* FullScreenGenericPostDebugViewModel.swift in Sources */,
 				9459CF1027552E960031E6F7 /* SignUpView.swift in Sources */,
 				9459CF572755AF550031E6F7 /* AuthenticationAPIService.swift in Sources */,
 				9459CF1227552E9C0031E6F7 /* SignInView.swift in Sources */,
@@ -664,6 +708,7 @@
 				9459CF5D275631440031E6F7 /* ActivityIndicator.swift in Sources */,
 				9459CF6C275638860031E6F7 /* AppTabViewModel.swift in Sources */,
 				9459CF4A2755AD0F0031E6F7 /* NetError.swift in Sources */,
+				94AA22462758267A00937B07 /* HapticModifier.swift in Sources */,
 				9459CF2A2755482F0031E6F7 /* PasswordResetViewModel.swift in Sources */,
 				9459CF3E27559A8D0031E6F7 /* ViewExtensions.swift in Sources */,
 				9459CF1727552F570031E6F7 /* SignUpViewModel.swift in Sources */,
@@ -673,6 +718,8 @@
 				9459CF67275638070031E6F7 /* AuthenticateView.swift in Sources */,
 				9459CF26275540300031E6F7 /* SignInViewModel.swift in Sources */,
 				9459CF8C2756C4380031E6F7 /* FullScreenPostImageView.swift in Sources */,
+				94AA22372757AB8600937B07 /* NoFeedbackButtonStyle.swift in Sources */,
+				94AA22412757B38E00937B07 /* FullScreenGenericPostViewModel.swift in Sources */,
 				9459CF3C275597D10031E6F7 /* SignUpViewFormFields.swift in Sources */,
 				9459CF1B2755335B0031E6F7 /* LoginTextInput.swift in Sources */,
 				9459CF76275654860031E6F7 /* PostStackView.swift in Sources */,
@@ -683,6 +730,7 @@
 				9459CF782756548B0031E6F7 /* PostView.swift in Sources */,
 				9459CF4027559C420031E6F7 /* SignInViewFormFields.swift in Sources */,
 				9459CF7C2756617C0031E6F7 /* PostStackViewModel.swift in Sources */,
+				94AA223C2757B25000937B07 /* FullScreenGenericPostView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

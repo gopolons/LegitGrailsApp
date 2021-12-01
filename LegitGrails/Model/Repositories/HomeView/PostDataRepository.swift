@@ -17,9 +17,12 @@ protocol PostDataRepositoryProtocol {
     func repost(id: String, userID: String, completion: @escaping (NetResponse?, NetError?) -> Void)
     
     func unrepost(id: String, userID: String, completion: @escaping (NetResponse?, NetError?) -> Void)
+    
+    func fetchPost(id: String, completion: @escaping (Post?, NetError?) -> Void)
 }
 
 final class PostDataRepository: PostDataRepositoryProtocol {
+    
     private var apiService: PostAPIServiceProtocol
     private var serviceManager: Reachability
     
@@ -39,6 +42,7 @@ final class PostDataRepository: PostDataRepositoryProtocol {
     
     func likePost(id: String, userID: String, completion: @escaping (NetResponse?, NetError?) -> Void) {
         if serviceManager.checkConnection() {
+            HapticFeedback.medium.impact()
             apiService.likePost(id: id, userID: userID) { response, err in
                 guard err == nil else {
                     switch err {
@@ -84,6 +88,7 @@ final class PostDataRepository: PostDataRepositoryProtocol {
     
     func repost(id: String, userID: String, completion: @escaping (NetResponse?, NetError?) -> Void) {
         if serviceManager.checkConnection() {
+            HapticFeedback.medium.impact()
             apiService.repost(id: id, userID: userID) { response, err in
                 guard err == nil else {
                     switch err {
@@ -126,6 +131,28 @@ final class PostDataRepository: PostDataRepositoryProtocol {
             completion(nil, NetError.noConnection)
         }
 
+    }
+    
+    func fetchPost(id: String, completion: @escaping (Post?, NetError?) -> Void) {
+        if serviceManager.checkConnection() {
+            apiService.fetchPost(id: id) { data, err in
+                guard err == nil else {
+                    switch err {
+                    case .invalidRequest:
+                        completion(nil, err)
+                        return
+                    case .noConnection:
+                        completion(nil, err)
+                        return
+                    case .none:
+                        return
+                    }
+                }
+                completion(data, nil)
+            }
+        } else {
+            completion(nil, NetError.noConnection)
+        }
     }
     
     init(apiService: PostAPIServiceProtocol = PostApiService()) {

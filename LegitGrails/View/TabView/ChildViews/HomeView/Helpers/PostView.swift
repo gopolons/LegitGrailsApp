@@ -13,145 +13,152 @@ struct PostView: View {
     @StateObject var modelData: PostViewModel
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            HStack {
-                Circle()
-                    .frame(width: 40, height: 40)
-                VStack(alignment: .leading) {
-                    Text(modelData.post.username)
+        Button {
+            modelData.openPost()
+        } label: {
+            VStack(alignment: .leading, spacing: 20) {
+                HStack {
+                    Circle()
+                        .frame(width: 40, height: 40)
+                    VStack(alignment: .leading) {
+                        Text(modelData.post.username)
+                            .bold()
+                        HStack {
+                            Text(modelData.post.communityName)
+                            ForEach(modelData.post.tags, id: \.self) { tag in
+                                Text("•")
+                                Text(tag)
+                            }
+                        }
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                    }
+                }
+                VStack(alignment: .leading, spacing: 20) {
+                    Text(modelData.post.title)
                         .bold()
-                    HStack {
-                        Text(modelData.post.communityName)
-                        ForEach(modelData.post.tags, id: \.self) { tag in
-                            Text("•")
-                            Text(tag)
+                        .font(.footnote)
+                        
+                    VStack(alignment: .leading) {
+                        Text(modelData.post.text)
+                            .font(.footnote)
+                            .lineLimit(modelData.lineLimit)
+                            .lineSpacing(6)
+                        
+                        if !modelData.extended {
+                            Button {
+                                modelData.extendPost()
+                            } label: {
+                                Text("...see more")
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
+                                    .lineSpacing(5)
+                                    .padding(.top, 1)
+
+                                    
+                            }
+                            .buttonStyle(PlainButtonStyle())
+
+
                         }
                     }
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-                }
-            }
-            VStack(alignment: .leading, spacing: 20) {
-                Text(modelData.post.title)
-                    .bold()
-                    .font(.footnote)
-                    
-                VStack(alignment: .leading) {
-                    Text(modelData.post.text)
-                        .font(.footnote)
-                        .lineLimit(modelData.lineLimit)
-                        .lineSpacing(6)
-                    
-                    if !modelData.extended {
-                        Button {
-                            modelData.extendPost()
-                        } label: {
-                            Text("...read more")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
-                                .lineSpacing(5)
-                                .padding(.top, 1)
+                    if !modelData.post.images.isEmpty {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(modelData.post.images, id: \.self) { img in
+                                    Button {
+                                        modelData.openImage(selectedImg: img)
+                                    } label: {
+                                        Image(img)
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 250, height: 200)
+                                            .clipped()
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
+                                }
+                            }
+                            
+                            
+                        }
+                        .frame(height: 200)
+                    }
 
-                                
+                }
+                
+                HStack(spacing: 20) {
+                    HStack {
+                        Image(systemName: "eye")
+                        Text("\(modelData.post.viewCountIDs.count)")
+                            .font(.caption)
+                            .fixedSize(horizontal: true, vertical: false)
+
+                        
+                    }
+                    .foregroundColor(.gray)
+                    
+                    Spacer(minLength: 0)
+                    
+                    HStack {
+                        Button {
+                            modelData.repostPressed()
+                        } label: {
+                            Text("\(modelData.post.repostIDs.count)")
+                                .font(.caption)
+                                .fixedSize(horizontal: true, vertical: false)
+
+                            Image(systemName: "arrowshape.turn.up.forward.fill")
                         }
                         .buttonStyle(PlainButtonStyle())
 
 
                     }
-                }
-                if !modelData.post.images.isEmpty {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(modelData.post.images, id: \.self) { img in
-                                Button {
-                                    modelData.openImage(selectedImg: img)
-                                } label: {
-                                    Image(img)
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: 250, height: 200)
-                                        .clipped()
-                                }
-                                .buttonStyle(PlainButtonStyle())
-                            }
+                    .foregroundColor(modelData.reposted ? Color("AccentColor") : .gray)
+
+                    
+                    HStack {
+                        Text("\(modelData.post.commentIDs.count)")
+                            .font(.caption)
+                            .fixedSize(horizontal: true, vertical: false)
+                        
+                        Image(systemName: "bubble.left.fill")
+                            .foregroundColor(.gray)
+
+
+                    }
+                    .foregroundColor(.gray)
+                    
+                    HStack {
+                        Button {
+                            modelData.likePressed()
+                        } label: {
+                            Text("\(modelData.post.likeIDs.count)")
+                                .font(.caption)
+                                .fixedSize(horizontal: true, vertical: false)
+                            
+                            Image(systemName: "heart.fill")
                         }
-                        
-                        
+                        .buttonStyle(PlainButtonStyle())
                     }
-                    .frame(height: 200)
+                    .foregroundColor(modelData.liked ? Color("AccentColor") : .gray)
+                    .hapticFeedback(.soft)
                 }
-
+                
             }
-            
-            HStack(spacing: 20) {
-                HStack {
-                    Image(systemName: "eye")
-                    Text("\(modelData.post.viewCountIDs.count)")
-                        .font(.caption)
-                        .fixedSize(horizontal: true, vertical: false)
-
-                    
-                }
-                .foregroundColor(.gray)
+            .frame(maxWidth: .infinity)
+            .padding()
+            .overlay(
+                RoundedRectangle(cornerRadius: 15)
+                    .stroke(Color(.systemGray6), lineWidth: 1)
+            )
+            .spAlert(isPresent: $modelData.alert, title: "Error", message: modelData.alertMessage, duration: 1, dismissOnTap: true, preset: .error, haptic: .error, layout: .message()) {
                 
-                Spacer(minLength: 0)
-                
-                HStack {
-                    Button {
-                        modelData.repostPressed()
-                    } label: {
-                        Text("\(modelData.post.repostIDs.count)")
-                            .font(.caption)
-                            .fixedSize(horizontal: true, vertical: false)
-
-                        Image(systemName: "arrowshape.turn.up.forward.fill")
-                    }
-                    .buttonStyle(PlainButtonStyle())
-
-
-                }
-                .foregroundColor(modelData.reposted ? Color("AccentColor") : .gray)
-
-                
-                HStack {
-                    Text("\(modelData.post.commentIDs.count)")
-                        .font(.caption)
-                        .fixedSize(horizontal: true, vertical: false)
-                    
-                    Image(systemName: "bubble.left.fill")
-                        .foregroundColor(.gray)
-
-
-                }
-                .foregroundColor(.gray)
-                
-                HStack {
-                    Button {
-                        modelData.likePressed()
-                    } label: {
-                        Text("\(modelData.post.likeIDs.count)")
-                            .font(.caption)
-                            .fixedSize(horizontal: true, vertical: false)
-                        
-                        Image(systemName: "heart.fill")
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }
-                .foregroundColor(modelData.liked ? Color("AccentColor") : .gray)
             }
-            
+
         }
-        .frame(maxWidth: .infinity)
-        .padding()
-        .overlay(
-            RoundedRectangle(cornerRadius: 15)
-                .stroke(Color(.systemGray6), lineWidth: 1)
-        )
+        .buttonStyle(NoFeedbackButtonStyle())
         .onAppear {
             modelData.onAppear()
-        }
-        .spAlert(isPresent: $modelData.alert, title: "Error", message: modelData.alertMessage, duration: 1, dismissOnTap: true, preset: .error, haptic: .error, layout: .message()) {
-            
         }
     }
 }

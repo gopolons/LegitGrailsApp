@@ -7,6 +7,8 @@
 
 import Foundation
 
+var samplePostData = [Post(ID: "1", tags: ["thoughts"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: [], commentIDs: ["fd", "fds", "fdsa"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa", "test"], viewCountIDs: ["fd", "fds", "fdsa"]), Post(ID: "2", tags: ["thoughts"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: ["HowItWorksLink", "AuthenticateLink", "PracticeLink"], commentIDs: ["fd", "fds", "fdsa"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa"], viewCountIDs: ["fd", "fds", "fdsa"]), Post(ID: "3", tags: ["thoughts"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: [], commentIDs: ["fd", "fds", "fdsa"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa"], viewCountIDs: ["fd", "fds", "fdsa"]), Post(ID: "4", tags: ["thoughts"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: [], commentIDs: ["fd", "fds", "fdsa"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa"], viewCountIDs: ["fd", "fds", "fdsa"]), Post(ID: "5", tags: ["thoughts"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: [], commentIDs: ["fd", "fds", "fdsa"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa"], viewCountIDs: ["fd", "fds", "fdsa"])]
+
 protocol PostAPIServiceProtocol {
     func fetchPosts(completion: @escaping (Post?, NetError?) -> Void)
     
@@ -18,13 +20,13 @@ protocol PostAPIServiceProtocol {
     
     func unrepost(id: String, userID: String, completion: @escaping (NetResponse?, NetError?) -> Void)
 
+    func fetchPost(id: String, completion: @escaping (Post?, NetError?) -> Void)
 }
 
 final class PostApiService: PostAPIServiceProtocol {
-    var posts = [Post(ID: "1", tags: ["thoughts"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: [], commentIDs: ["fd", "fds", "fdsa"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa", "test"], viewCountIDs: ["fd", "fds", "fdsa"]), Post(ID: "2", tags: ["thoughts"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: ["HowItWorksLink", "AuthenticateLink", "PracticeLink"], commentIDs: ["fd", "fds", "fdsa"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa"], viewCountIDs: ["fd", "fds", "fdsa"]), Post(ID: "3", tags: ["thoughts"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: [], commentIDs: ["fd", "fds", "fdsa"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa"], viewCountIDs: ["fd", "fds", "fdsa"]), Post(ID: "4", tags: ["thoughts"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: [], commentIDs: ["fd", "fds", "fdsa"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa"], viewCountIDs: ["fd", "fds", "fdsa"]), Post(ID: "5", tags: ["thoughts"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: [], commentIDs: ["fd", "fds", "fdsa"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa"], viewCountIDs: ["fd", "fds", "fdsa"])]
         
     func fetchPosts(completion: @escaping (Post?, NetError?) -> Void) {
-        for x in posts {
+        for x in samplePostData {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 completion(x, nil)
             }
@@ -32,12 +34,12 @@ final class PostApiService: PostAPIServiceProtocol {
     }
     
     func repost(id: String, userID: String, completion: @escaping (NetResponse?, NetError?) -> Void) {
-        let post = posts.filter { post in
+        let post = samplePostData.filter { post in
             post.ID == id
         }
-        let index = posts.firstIndex(of: post.first!)
+        let index = samplePostData.firstIndex(of: post.first!)
         
-        posts[index!].repostIDs.append(userID)
+        samplePostData[index!].repostIDs.append(userID)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             completion(.success, nil)
@@ -45,14 +47,14 @@ final class PostApiService: PostAPIServiceProtocol {
     }
     
     func unrepost(id: String, userID: String, completion: @escaping (NetResponse?, NetError?) -> Void) {
-        let post = posts.filter { post in
+        let post = samplePostData.filter { post in
             post.ID == id
         }
-        let index = posts.firstIndex(of: post.first!)
+        let index = samplePostData.firstIndex(of: post.first!)
         
-        let userIndex = posts[index!].repostIDs.firstIndex(of: userID)
+        let userIndex = samplePostData[index!].repostIDs.firstIndex(of: userID)
         
-        posts[index!].repostIDs.remove(at: userIndex!)
+        samplePostData[index!].repostIDs.remove(at: userIndex!)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             completion(.success, nil)
@@ -61,12 +63,12 @@ final class PostApiService: PostAPIServiceProtocol {
     
     
     func likePost(id: String, userID: String, completion: @escaping (NetResponse?, NetError?) -> Void) {
-        let post = posts.filter { post in
+        let post = samplePostData.filter { post in
             post.ID == id
         }
-        let index = posts.firstIndex(of: post.first!)
+        let index = samplePostData.firstIndex(of: post.first!)
         
-        posts[index!].likeIDs.append(userID)
+        samplePostData[index!].likeIDs.append(userID)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             completion(.success, nil)
@@ -75,17 +77,27 @@ final class PostApiService: PostAPIServiceProtocol {
     }
     
     func dislikePost(id: String, userID: String, completion: @escaping (NetResponse?, NetError?) -> Void) {
-        let post = posts.filter { post in
+        let post = samplePostData.filter { post in
             post.ID == id
         }
-        let index = posts.firstIndex(of: post.first!)
+        let index = samplePostData.firstIndex(of: post.first!)
         
-        let userIndex = posts[index!].likeIDs.firstIndex(of: userID)
+        let userIndex = samplePostData[index!].likeIDs.firstIndex(of: userID)
         
-        posts[index!].likeIDs.remove(at: userIndex!)
+        samplePostData[index!].likeIDs.remove(at: userIndex!)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             completion(.success, nil)
+        }
+    }
+    
+    func fetchPost(id: String, completion: @escaping (Post?, NetError?) -> Void) {
+        let post = samplePostData.filter { post in
+            post.ID == id
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            completion(post.first, nil)
         }
     }
 }

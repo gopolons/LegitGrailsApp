@@ -11,8 +11,6 @@ struct FullScreenPostImageView: View {
     
     @StateObject var modelData: FullScreenPostImageViewModel
     
-    @State var isSearching = false
-    
     var body: some View {
         ZStack {
             VStack {
@@ -100,8 +98,8 @@ struct FullScreenPostImageView: View {
     }
 }
 
-struct FullScreenImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        FullScreenPostImageView(modelData: FullScreenPostImageViewModel(coordinator: SessionManagerObject()))
-    }
-}
+//struct FullScreenImageView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FullScreenPostImageView(modelData: FullScreenPostImageViewModel(coordinator: SessionManagerObject()))
+//    }
+//}

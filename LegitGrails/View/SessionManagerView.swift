@@ -22,13 +22,42 @@ struct SessionManagerView: View {
         case .login:
             SignUpView(modelData: coordinator.signUpVM)
         case .tabView:
+            
             ZStack {
-                AppTabView(modelData: coordinator.appTabVM)
-                    .zIndex(1)
-
+                NavigationView {
+                    ZStack {
+                        AppTabView(modelData: coordinator.appTabVM)
+                        
+                        NavigationLink(isActive: $coordinator.postView) {
+                            FullScreenGenericPostView(modelData: coordinator.fullScreenPostVM)
+                                .navigationTitle("")
+                                .navigationBarTitleDisplayMode(.inline)
+                                .toolbar {
+                                    ToolbarItem(placement: .principal) {
+                                        Image("LegitGrails")
+                                            .resizable()
+                                            .frame(width: 50, height: 40)
+                                    }
+                                }
+                        } label: {
+                            Text("")
+                                .hidden()
+                        }
+                        .zIndex(1)
+                        .navigationTitle("")
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                Image("LegitGrails")
+                                    .resizable()
+                                    .frame(width: 50, height: 40)
+                            }
+                        }
+                    }
+                }
                 if coordinator.postImagesView {
                     FullScreenPostImageView(modelData: coordinator.fullScreenPostImgVM)
-                        .zIndex(2)
+                        .zIndex(100)
                 }
             }
         }

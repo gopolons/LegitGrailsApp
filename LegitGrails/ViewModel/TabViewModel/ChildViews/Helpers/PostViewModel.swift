@@ -21,20 +21,44 @@ final class PostViewModel: ObservableObject {
     @Published var alertMessage = ""
     
     func onAppear() {
-        if !(post.text.count > 100) {
-            extended = true
+        dataRepo.fetchPost(id: post.ID) { data, err in
+            guard err == nil else {
+                switch err {
+                case .invalidRequest:
+                    self.alertMessage = err!.description
+                    self.alert.toggle()
+                    return
+                case .noConnection:
+                    self.alertMessage = err!.description
+                    self.alert.toggle()
+                    return
+                case .none:
+                    return
+                }
+            }
+            
+            self.post = data!
+            
+            
+            if !(data!.text.count > 100) {
+                self.extended = true
+            }
+            
+            if data!.likeIDs.contains(self.coordinator.userID) {
+                self.liked = true
+            } else {
+                self.liked = false
+            }
+            
+            if data!.repostIDs.contains(self.coordinator.userID) {
+                self.reposted = true
+            } else {
+                self.reposted = false
+            }
+
         }
-        
-        if post.likeIDs.contains(coordinator.userID) {
-            liked = true
-        }
-        
-        if post.repostIDs.contains(coordinator.userID) {
-            reposted = true
-        }
-        
     }
-    
+
     func openImage(selectedImg: String) {
         coordinator.openPostImage(selected: selectedImg, images: post.images)
     }
@@ -54,24 +78,28 @@ final class PostViewModel: ObservableObject {
         }
     }
     
+    func openPost() {
+        coordinator.openPost(postID: post.ID)
+    }
+    
     private func like() {
-        liked.toggle()
+        liked = true
         post.likeIDs.append(coordinator.userID)
         dataRepo.likePost(id: post.ID, userID: coordinator.userID) { response, err in
             guard err == nil else {
                 let likeIndex = self.post.likeIDs.firstIndex(of: self.coordinator.userID)
                 switch err {
                 case .invalidRequest:
-                    self.alertMessage = "Invalid request, please try again later"
+                    self.alertMessage = err!.description
                     self.alert.toggle()
                     self.post.likeIDs.remove(at: likeIndex!)
-                    self.liked.toggle()
+                    self.liked = false
                     return
                 case .noConnection:
-                    self.alertMessage = "No connection, please try again later"
+                    self.alertMessage = err!.description
                     self.alert.toggle()
                     self.post.likeIDs.remove(at: likeIndex!)
-                    self.liked.toggle()
+                    self.liked = false
                     return
                 case .none:
                     return
@@ -81,23 +109,23 @@ final class PostViewModel: ObservableObject {
     }
     
     private func dislike() {
-        liked.toggle()
+        liked = false
         let likeIndex = self.post.likeIDs.firstIndex(of: self.coordinator.userID)
         self.post.likeIDs.remove(at: likeIndex!)
-        dataRepo.likePost(id: post.ID, userID: coordinator.userID) { response, err in
+        dataRepo.dislikePost(id: post.ID, userID: coordinator.userID) { response, err in
             guard err == nil else {
                 switch err {
                 case .invalidRequest:
-                    self.alertMessage = "Invalid request, please try again later"
+                    self.alertMessage = err!.description
                     self.alert.toggle()
                     self.post.likeIDs.append(self.coordinator.userID)
-                    self.liked.toggle()
+                    self.liked = true
                     return
                 case .noConnection:
-                    self.alertMessage = "No connection, please try again later"
+                    self.alertMessage = err!.description
                     self.alert.toggle()
                     self.post.likeIDs.append(self.coordinator.userID)
-                    self.liked.toggle()
+                    self.liked = true
                     return
                 case .none:
                     return
@@ -107,23 +135,23 @@ final class PostViewModel: ObservableObject {
     }
     
     private func repost() {
-        reposted.toggle()
+        reposted = true
         post.repostIDs.append(coordinator.userID)
         dataRepo.repost(id: post.ID, userID: coordinator.userID) { response, err in
             guard err == nil else {
                 let repostIndex = self.post.repostIDs.firstIndex(of: self.coordinator.userID)
                 switch err {
                 case .invalidRequest:
-                    self.alertMessage = "Invalid request, please try again later"
+                    self.alertMessage = err!.description
                     self.alert.toggle()
                     self.post.repostIDs.remove(at: repostIndex!)
-                    self.reposted.toggle()
+                    self.reposted = false
                     return
                 case .noConnection:
-                    self.alertMessage = "No connection, please try again later"
+                    self.alertMessage = err!.description
                     self.alert.toggle()
                     self.post.repostIDs.remove(at: repostIndex!)
-                    self.reposted.toggle()
+                    self.reposted = false
                     return
                 case .none:
                     return
@@ -133,23 +161,23 @@ final class PostViewModel: ObservableObject {
     }
     
     private func unrepost() {
-        reposted.toggle()
+        reposted = false
         let repostIndex = self.post.repostIDs.firstIndex(of: self.coordinator.userID)
         self.post.repostIDs.remove(at: repostIndex!)
         dataRepo.unrepost(id: post.ID, userID: coordinator.userID) { response, err in
             guard err == nil else {
                 switch err {
                 case .invalidRequest:
-                    self.alertMessage = "Invalid request, please try again later"
+                    self.alertMessage = err!.description
                     self.alert.toggle()
                     self.post.repostIDs.append(self.coordinator.userID)
-                    self.reposted.toggle()
+                    self.reposted = true
                     return
                 case .noConnection:
-                    self.alertMessage = "No connection, please try again later"
+                    self.alertMessage = err!.description
                     self.alert.toggle()
                     self.post.repostIDs.append(self.coordinator.userID)
-                    self.reposted.toggle()
+                    self.reposted = true
                     return
                 case .none:
                     return

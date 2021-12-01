@@ -29,7 +29,7 @@ struct PostStackView: View {
                 }
             }
             
-            if modelData.error {
+            if modelData.error && modelData.posts.isEmpty {
                 HStack {
                     Spacer()
                     Button {
