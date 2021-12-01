@@ -11,8 +11,20 @@ struct FullScreenPostImageView: View {
     
     @StateObject var modelData: FullScreenPostImageViewModel
     
+    @State var isSearching = false
+    
     var body: some View {
         ZStack {
+            VStack {
+                Text("")
+                Spacer()
+                HStack {
+                    Spacer()
+                }
+            }
+            .background(Color.black)
+            .ignoresSafeArea(.all)
+            
             VStack {
                 if !modelData.images.isEmpty {
                     HStack {
@@ -20,48 +32,71 @@ struct FullScreenPostImageView: View {
                             ForEach(modelData.images, id: \.self) { img in
                                 ZoomableImageView(image: UIImage(named: img)!)
                                     .tag(img)
+                                    .ignoresSafeArea(.all)
+                                    .onTapGesture {
+                                        modelData.hideUI()
+                                    }
                             }
                         }
-                        .tabViewStyle(PageTabViewStyle(indexDisplayMode: modelData.hidePagination ? .never : .always))
+                        .onAppear(perform: {
+                            UIScrollView.appearance().bounces = false
+                        })
+                        .onDisappear(perform: {
+                            UIScrollView.appearance().bounces = true
+                        })
+                        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                         .modifier(DraggableModifier(direction: .vertical, action: {
                             modelData.dismissView()
                         }, draggedOffset: $modelData.imageOffset))
-                        .onChange(of: modelData.imageOffset) { x in
-                            modelData.onDrag(x)
-                        }
                     }
                 }
             }
-            .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
-            
+            .zIndex(1)
 
-            VStack {
-                HStack {
-                    Spacer()
-                    
-                    Button {
-                        modelData.dismissView()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .foregroundColor(.white)
+            if modelData.uiShown {
+                VStack {
+                    ZStack {
+                        
+                        HStack {
+                            Button {
+                                modelData.dismissView()
+                            } label: {
+                                Image(systemName: "chevron.backward")
+                                    .resizable()
+                                    .frame(width: 12, height: 20)
+                                    .foregroundColor(.white)
+                                    .padding(.leading)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            
+                            Spacer()
+                        }
+                        
+                        HStack {
+                            Text("\(modelData.images.firstIndex(of: modelData.openedImage)! + 1) of \(modelData.images.count)")
+                                .foregroundColor(.white)
+                                .bold()
+                        }
+                        
+                        
+
                     }
-                    .buttonStyle(PlainButtonStyle())
-                    .padding(.top, 50)
-                    .padding(.trailing, 30)
+                    .padding(.top, UIScreen.screenHeight <= 736 ? 30 : 60)
+                    .frame(width: UIScreen.screenWidth)
+                    .padding(.bottom, 10)
+                    .background(Color.black)
 
+                    Spacer()
                 }
-                Spacer()
+                .ignoresSafeArea(.all)
+                .zIndex(2)
+
             }
             
         }
-        .background(Color(.black))
-        .ignoresSafeArea(.all)
         .onDisappear {
             modelData.onDisappear()
         }
-        
     }
 }
 

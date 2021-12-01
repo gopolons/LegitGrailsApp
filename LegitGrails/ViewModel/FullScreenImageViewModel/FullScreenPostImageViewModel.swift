@@ -13,23 +13,20 @@ final class FullScreenPostImageViewModel: ObservableObject {
     @Published var images: [String]
     @Published var openedImage: String
     @Published var imageOffset: CGSize = .zero
-    @Published var hidePagination = false
+    @Published var uiShown = true
     
     func dismissView() {
         coordinator.dismissPostImage()
     }
     
-    func onDrag(_ x: CGSize) {
-        if x.height == .zero {
-            hidePagination = false
-        } else {
-            hidePagination = true
+    func hideUI() {
+        withAnimation {
+            uiShown.toggle()
         }
     }
     
     func onDisappear() {
         imageOffset = .zero
-        hidePagination = false
     }
     
     init(coordinator: SessionManagerObject) {
