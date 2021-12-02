@@ -11,13 +11,18 @@ final class FullScreenGenericPostViewModel: ObservableObject {
     @Published var postID = ""
     @Published var liked = false
     @Published var reposted = false
+//    MARK: UNCOMMENT FOR PRODUCTION
     @Published var post: Post!
+//    @Published var post: Post! = Post(ID: "1", tags: ["DEBUG POST"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: ["HowItWorksLink", "AuthenticateLink", "PracticeLink"], commentIDs: ["fd", "fds", "fdsa"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa", "test"], viewCountIDs: ["fd", "fds", "fdsa"])
+
     @Published var alert = false
     @Published var alertMessage = ""
     @Published var connectionError = false
+    @Published var selectedCommentID = ""
     
     private var coordinator: SessionManagerObject
     private var dataRepo: PostDataRepositoryProtocol
+    var commentStackVM = CommentStackViewModel(commentIDs: [])
     
     func showImages(_ img: String) {
         coordinator.openPostImage(selected: img, images: post.images)
@@ -143,6 +148,7 @@ final class FullScreenGenericPostViewModel: ObservableObject {
     }
     
     func onAppear() {
+//  MARK: UNCOMMENT FOR PRODUCTION
         dataRepo.fetchPost(id: postID) { post, err in
             guard err == nil else {
                 switch err {
@@ -156,6 +162,9 @@ final class FullScreenGenericPostViewModel: ObservableObject {
                     return
                 }
             }
+            
+            self.commentStackVM = CommentStackViewModel(commentIDs: post!.commentIDs)
+
             if post!.likeIDs.contains(self.coordinator.userID) {
                 self.liked = true
             }
@@ -163,7 +172,8 @@ final class FullScreenGenericPostViewModel: ObservableObject {
             if post!.repostIDs.contains(self.coordinator.userID) {
                 self.reposted = true
             }
-                        
+        
+
             withAnimation {
                 self.post = post!
             }

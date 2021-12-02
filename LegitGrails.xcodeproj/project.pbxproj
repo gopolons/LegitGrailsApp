@@ -65,8 +65,17 @@
 		94AA223A2757B21600937B07 /* FullScreenPostViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA22392757B21600937B07 /* FullScreenPostViewCoordinator.swift */; };
 		94AA223C2757B25000937B07 /* FullScreenGenericPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA223B2757B25000937B07 /* FullScreenGenericPostView.swift */; };
 		94AA22412757B38E00937B07 /* FullScreenGenericPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA22402757B38E00937B07 /* FullScreenGenericPostViewModel.swift */; };
-		94AA224427580C6500937B07 /* FullScreenGenericPostDebugViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA224327580C6500937B07 /* FullScreenGenericPostDebugViewModel.swift */; };
 		94AA22462758267A00937B07 /* HapticModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA22452758267A00937B07 /* HapticModifier.swift */; };
+		94AA224A2758449A00937B07 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA22492758449A00937B07 /* CommentCell.swift */; };
+		94AA224C27584E7E00937B07 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA224B27584E7E00937B07 /* Comment.swift */; };
+		94AA224E2758572300937B07 /* CommentInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AA224D2758572300937B07 /* CommentInputField.swift */; };
+		94E8B7E82759107200A63152 /* FullScreenGenericPostViewFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E8B7E72759107200A63152 /* FullScreenGenericPostViewFormField.swift */; };
+		94E8B7EA2759121600A63152 /* KeyboardAdaptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E8B7E92759121600A63152 /* KeyboardAdaptive.swift */; };
+		94E8B7EC27595F2D00A63152 /* PostLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E8B7EB27595F2D00A63152 /* PostLoadingView.swift */; };
+		94E8B7F12759660F00A63152 /* CommentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E8B7F02759660F00A63152 /* CommentCellViewModel.swift */; };
+		94E8B7F327596B5700A63152 /* FullScreenGenericPostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E8B7F227596B5700A63152 /* FullScreenGenericPostContentView.swift */; };
+		94E8B7F52759747E00A63152 /* CommentStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E8B7F42759747E00A63152 /* CommentStackViewModel.swift */; };
+		94E8B7F727597A2400A63152 /* CommentStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E8B7F627597A2400A63152 /* CommentStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,8 +155,17 @@
 		94AA22392757B21600937B07 /* FullScreenPostViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenPostViewCoordinator.swift; sourceTree = "<group>"; };
 		94AA223B2757B25000937B07 /* FullScreenGenericPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenGenericPostView.swift; sourceTree = "<group>"; };
 		94AA22402757B38E00937B07 /* FullScreenGenericPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenGenericPostViewModel.swift; sourceTree = "<group>"; };
-		94AA224327580C6500937B07 /* FullScreenGenericPostDebugViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenGenericPostDebugViewModel.swift; sourceTree = "<group>"; };
 		94AA22452758267A00937B07 /* HapticModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticModifier.swift; sourceTree = "<group>"; };
+		94AA22492758449A00937B07 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		94AA224B27584E7E00937B07 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		94AA224D2758572300937B07 /* CommentInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputField.swift; sourceTree = "<group>"; };
+		94E8B7E72759107200A63152 /* FullScreenGenericPostViewFormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenGenericPostViewFormField.swift; sourceTree = "<group>"; };
+		94E8B7E92759121600A63152 /* KeyboardAdaptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAdaptive.swift; sourceTree = "<group>"; };
+		94E8B7EB27595F2D00A63152 /* PostLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLoadingView.swift; sourceTree = "<group>"; };
+		94E8B7F02759660F00A63152 /* CommentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellViewModel.swift; sourceTree = "<group>"; };
+		94E8B7F227596B5700A63152 /* FullScreenGenericPostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenGenericPostContentView.swift; sourceTree = "<group>"; };
+		94E8B7F42759747E00A63152 /* CommentStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentStackViewModel.swift; sourceTree = "<group>"; };
+		94E8B7F627597A2400A63152 /* CommentStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				9459CF2327553C4A0031E6F7 /* UIScreenExtensions.swift */,
+				94E8B7E92759121600A63152 /* KeyboardAdaptive.swift */,
 				9459CF3D27559A8D0031E6F7 /* ViewExtensions.swift */,
 				94AA22362757AB8600937B07 /* NoFeedbackButtonStyle.swift */,
 				94AA22452758267A00937B07 /* HapticModifier.swift */,
@@ -352,6 +371,7 @@
 			children = (
 				9459CF472755ACDD0031E6F7 /* SessionData.swift */,
 				9459CF7927565D1C0031E6F7 /* Post.swift */,
+				94AA224B27584E7E00937B07 /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -519,6 +539,8 @@
 			children = (
 				94AA22392757B21600937B07 /* FullScreenPostViewCoordinator.swift */,
 				94AA223B2757B25000937B07 /* FullScreenGenericPostView.swift */,
+				94E8B7E62759105300A63152 /* FormFields */,
+				94AA22482758448B00937B07 /* Helpers */,
 			);
 			path = FullScreenPostView;
 			sourceTree = "<group>";
@@ -527,17 +549,38 @@
 			isa = PBXGroup;
 			children = (
 				94AA22402757B38E00937B07 /* FullScreenGenericPostViewModel.swift */,
-				94AA224227580C3F00937B07 /* Debug */,
+				94E8B7ED275965E300A63152 /* Helpers */,
 			);
 			path = FullScreenPostViewModel;
 			sourceTree = "<group>";
 		};
-		94AA224227580C3F00937B07 /* Debug */ = {
+		94AA22482758448B00937B07 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				94AA224327580C6500937B07 /* FullScreenGenericPostDebugViewModel.swift */,
+				94E8B7EB27595F2D00A63152 /* PostLoadingView.swift */,
+				94E8B7F227596B5700A63152 /* FullScreenGenericPostContentView.swift */,
+				94AA224D2758572300937B07 /* CommentInputField.swift */,
+				94AA22492758449A00937B07 /* CommentCell.swift */,
+				94E8B7F627597A2400A63152 /* CommentStackView.swift */,
 			);
-			path = Debug;
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		94E8B7E62759105300A63152 /* FormFields */ = {
+			isa = PBXGroup;
+			children = (
+				94E8B7E72759107200A63152 /* FullScreenGenericPostViewFormField.swift */,
+			);
+			path = FormFields;
+			sourceTree = "<group>";
+		};
+		94E8B7ED275965E300A63152 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				94E8B7F42759747E00A63152 /* CommentStackViewModel.swift */,
+				94E8B7F02759660F00A63152 /* CommentCellViewModel.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -692,16 +735,20 @@
 				9459CF2427553C4A0031E6F7 /* UIScreenExtensions.swift in Sources */,
 				9459CEE327552DBC0031E6F7 /* SessionManagerView.swift in Sources */,
 				9459CF2E27555CE00031E6F7 /* AppTabView.swift in Sources */,
+				94E8B7EA2759121600A63152 /* KeyboardAdaptive.swift in Sources */,
 				9459CF2C27554E290031E6F7 /* SessionManagerObject.swift in Sources */,
+				94E8B7EC27595F2D00A63152 /* PostLoadingView.swift in Sources */,
 				9459CF462755AB850031E6F7 /* AuthenticationParameterError.swift in Sources */,
 				9459CF7A27565D1D0031E6F7 /* Post.swift in Sources */,
 				9459CF1427552EA60031E6F7 /* PasswordResetView.swift in Sources */,
 				9459CF922756F3C20031E6F7 /* ZoomableImageView.swift in Sources */,
 				9459CF1F275535E20031E6F7 /* ToggleCheckbox.swift in Sources */,
+				94AA224C27584E7E00937B07 /* Comment.swift in Sources */,
+				94E8B7F727597A2400A63152 /* CommentStackView.swift in Sources */,
 				9459CF83275674F30031E6F7 /* PostAPIService.swift in Sources */,
-				94AA224427580C6500937B07 /* FullScreenGenericPostDebugViewModel.swift in Sources */,
 				9459CF1027552E960031E6F7 /* SignUpView.swift in Sources */,
 				9459CF572755AF550031E6F7 /* AuthenticationAPIService.swift in Sources */,
+				94AA224E2758572300937B07 /* CommentInputField.swift in Sources */,
 				9459CF1227552E9C0031E6F7 /* SignInView.swift in Sources */,
 				9459CF442755AB180031E6F7 /* AuthenticationDataRepository.swift in Sources */,
 				9459CF692756380E0031E6F7 /* ProfileView.swift in Sources */,
@@ -709,6 +756,7 @@
 				9459CF6C275638860031E6F7 /* AppTabViewModel.swift in Sources */,
 				9459CF4A2755AD0F0031E6F7 /* NetError.swift in Sources */,
 				94AA22462758267A00937B07 /* HapticModifier.swift in Sources */,
+				94E8B7F12759660F00A63152 /* CommentCellViewModel.swift in Sources */,
 				9459CF2A2755482F0031E6F7 /* PasswordResetViewModel.swift in Sources */,
 				9459CF3E27559A8D0031E6F7 /* ViewExtensions.swift in Sources */,
 				9459CF1727552F570031E6F7 /* SignUpViewModel.swift in Sources */,
@@ -716,15 +764,19 @@
 				9459CF7E275665030031E6F7 /* LinkButton.swift in Sources */,
 				9459CF7427564B060031E6F7 /* HomeLinks.swift in Sources */,
 				9459CF67275638070031E6F7 /* AuthenticateView.swift in Sources */,
+				94E8B7E82759107200A63152 /* FullScreenGenericPostViewFormField.swift in Sources */,
 				9459CF26275540300031E6F7 /* SignInViewModel.swift in Sources */,
 				9459CF8C2756C4380031E6F7 /* FullScreenPostImageView.swift in Sources */,
 				94AA22372757AB8600937B07 /* NoFeedbackButtonStyle.swift in Sources */,
+				94AA224A2758449A00937B07 /* CommentCell.swift in Sources */,
 				94AA22412757B38E00937B07 /* FullScreenGenericPostViewModel.swift in Sources */,
 				9459CF3C275597D10031E6F7 /* SignUpViewFormFields.swift in Sources */,
+				94E8B7F52759747E00A63152 /* CommentStackViewModel.swift in Sources */,
 				9459CF1B2755335B0031E6F7 /* LoginTextInput.swift in Sources */,
 				9459CF76275654860031E6F7 /* PostStackView.swift in Sources */,
 				9459CF2127553B470031E6F7 /* ConfirmButton.swift in Sources */,
 				9459CF8527568A4A0031E6F7 /* PostViewModel.swift in Sources */,
+				94E8B7F327596B5700A63152 /* FullScreenGenericPostContentView.swift in Sources */,
 				9459CF80275674670031E6F7 /* PostDataRepository.swift in Sources */,
 				9459CEE127552DBC0031E6F7 /* LegitGrailsApp.swift in Sources */,
 				9459CF782756548B0031E6F7 /* PostView.swift in Sources */,

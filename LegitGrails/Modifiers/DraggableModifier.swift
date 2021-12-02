@@ -38,12 +38,12 @@ struct DraggableModifier : ViewModifier {
                     withAnimation {
                         self.draggedOffset = CGSize(width: 0, height: 3000)
                         action()
+                        
                     }
                     
                 } else if value.predictedEndTranslation.height < CGFloat(-400) {
                     self.draggedOffset = value.translation
                     withAnimation {
-                        
                         self.draggedOffset = CGSize(width: 0, height: -3000)
                         action()
                     }
