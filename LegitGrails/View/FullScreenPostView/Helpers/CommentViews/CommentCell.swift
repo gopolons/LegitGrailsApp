@@ -151,6 +151,6 @@ struct CommentCell_Previews: PreviewProvider {
     @State static var selectedCommentID = "1"
     
     static var previews: some View {
-        CommentCell(modelData: CommentCellViewModel(comment: Comment(ID: "", username: "gdsaj", image: "AuthenticateLink", date: "11 of Jun??", text: "fdsafj dsafdsa", comments: []), commentStackCoordinator: CommentStackViewModel(commentIDs: [], postCoordinator: FullScreenGenericPostViewModel(coordinator: SessionManagerObject()))))
+        CommentCell(modelData: CommentCellViewModel(comment: Comment(ID: "", userID: "", username: "gdsaj", image: "AuthenticateLink", date: "11 of Jun??", text: "fdsafj dsafdsa", comments: []), commentStackCoordinator: CommentStackViewModel(commentIDs: [], postCoordinator: FullScreenGenericPostViewModel(coordinator: SessionManagerObject()))))
     }
 }

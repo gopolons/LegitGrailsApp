@@ -9,6 +9,7 @@ import Foundation
 
 struct Reply: Codable, Hashable {
     var ID: String
+    var userID: String
     var username: String
     var image: String
     var date: String
@@ -17,6 +18,7 @@ struct Reply: Codable, Hashable {
 
 struct Comment: Codable, Hashable {
     var ID: String
+    var userID: String
     var username: String
     var image: String
     var date: String
