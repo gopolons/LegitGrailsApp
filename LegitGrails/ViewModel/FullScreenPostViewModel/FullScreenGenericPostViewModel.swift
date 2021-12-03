@@ -11,13 +11,31 @@ final class FullScreenGenericPostViewModel: ObservableObject {
     @Published var postID = ""
     @Published var liked = false
     @Published var reposted = false
+//    MARK: CHANGE COMMENTS FOR PRODUCTION
     @Published var post: Post!
+
     @Published var alert = false
     @Published var alertMessage = ""
     @Published var connectionError = false
+    @Published var selectedCommentID = ""
+    @Published var likeCount = 0
+    @Published var repostCount = 0
+    @Published var commentCount = 0
+    @Published var viewCount = 0
     
     private var coordinator: SessionManagerObject
     private var dataRepo: PostDataRepositoryProtocol
+    private var _commentStackVM: CommentStackViewModel!
+    var commentStackVM: CommentStackViewModel {
+        return _commentStackVM
+    }
+    
+    private func updateFooter() {
+        likeCount = post.likeIDs.count
+        repostCount = post.repostIDs.count
+        commentCount = post.commentIDs.count
+        viewCount = post.viewCountIDs.count
+    }
     
     func showImages(_ img: String) {
         coordinator.openPostImage(selected: img, images: post.images)
@@ -25,6 +43,7 @@ final class FullScreenGenericPostViewModel: ObservableObject {
     
     func pressedLike() {
         liked ? dislike() : like()
+        updateFooter()
     }
     
     private func dislike() {
@@ -48,7 +67,6 @@ final class FullScreenGenericPostViewModel: ObservableObject {
                     return
                 }
             }
-            
         }
     }
     
@@ -79,6 +97,7 @@ final class FullScreenGenericPostViewModel: ObservableObject {
     
     func pressedRepost() {
         reposted ? unrepost() : repost()
+        updateFooter()
     }
     
     private func unrepost() {
@@ -131,6 +150,7 @@ final class FullScreenGenericPostViewModel: ObservableObject {
     }
     
     func onDisappear() {
+        //  MARK: UNCOMMENT FOR PRODUCTION
         self.post = nil
         self.postID.removeAll()
         self.liked = false
@@ -143,6 +163,7 @@ final class FullScreenGenericPostViewModel: ObservableObject {
     }
     
     func onAppear() {
+        //  MARK: UNCOMMENT FOR PRODUCTION
         dataRepo.fetchPost(id: postID) { post, err in
             guard err == nil else {
                 switch err {
@@ -156,6 +177,9 @@ final class FullScreenGenericPostViewModel: ObservableObject {
                     return
                 }
             }
+
+            self._commentStackVM = CommentStackViewModel(commentIDs: post!.commentIDs, postCoordinator: self)
+
             if post!.likeIDs.contains(self.coordinator.userID) {
                 self.liked = true
             }
@@ -163,15 +187,27 @@ final class FullScreenGenericPostViewModel: ObservableObject {
             if post!.repostIDs.contains(self.coordinator.userID) {
                 self.reposted = true
             }
-                        
+
+
             withAnimation {
                 self.post = post!
             }
+            
+            self.updateFooter()
+
+        }
+
+    }
+    
+    func changeSelectedComment(_ id: String) {
+        withAnimation {
+            self.selectedCommentID = id
         }
     }
     
     init(coordinator: SessionManagerObject, dataRepo: PostDataRepositoryProtocol = PostDataRepository()) {
         self.coordinator = coordinator
         self.dataRepo = dataRepo
+        self._commentStackVM = CommentStackViewModel(commentIDs: [], postCoordinator: self)
     }
 }

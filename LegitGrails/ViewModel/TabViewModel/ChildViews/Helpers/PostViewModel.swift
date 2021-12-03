@@ -19,6 +19,28 @@ final class PostViewModel: ObservableObject {
     @Published var lineLimit = 2
     @Published var alert = false
     @Published var alertMessage = ""
+    @Published var likeCount = 0
+    @Published var repostCount = 0
+    @Published var commentCount = 0
+    @Published var viewCount = 0
+    
+    private func updateFooter() {
+        likeCount = post.likeIDs.count
+        repostCount = post.repostIDs.count
+        commentCount = post.commentIDs.count
+        viewCount = post.viewCountIDs.count
+        if post.likeIDs.contains(self.coordinator.userID) {
+            self.liked = true
+        } else {
+            self.liked = false
+        }
+        
+        if post.repostIDs.contains(self.coordinator.userID) {
+            self.reposted = true
+        } else {
+            self.reposted = false
+        }
+    }
     
     func onAppear() {
         dataRepo.fetchPost(id: post.ID) { data, err in
@@ -39,21 +61,10 @@ final class PostViewModel: ObservableObject {
             
             self.post = data!
             
+            self.updateFooter()
             
             if !(data!.text.count > 100) {
                 self.extended = true
-            }
-            
-            if data!.likeIDs.contains(self.coordinator.userID) {
-                self.liked = true
-            } else {
-                self.liked = false
-            }
-            
-            if data!.repostIDs.contains(self.coordinator.userID) {
-                self.reposted = true
-            } else {
-                self.reposted = false
             }
 
         }
@@ -76,6 +87,7 @@ final class PostViewModel: ObservableObject {
         } else {
             like()
         }
+        updateFooter()
     }
     
     func openPost() {
@@ -193,6 +205,7 @@ final class PostViewModel: ObservableObject {
         } else {
             repost()
         }
+        updateFooter()
     }
     
     init(post: Post, coordinator: SessionManagerObject) {

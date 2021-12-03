@@ -12,10 +12,8 @@ final class SessionManagerObject: ObservableObject {
     @Published var openedImage = ""
     @Published var authToken = "test"
     @Published var userID = "test"
-    @Published var screenHeight: Double
     @Published var appState: AppState
     @Published var postImagesView = false
-    @Published var displayedPostID = ""
     @Published var postView = false
     
     private var _fullScreenPostVM: FullScreenGenericPostViewModel!
@@ -59,19 +57,17 @@ final class SessionManagerObject: ObservableObject {
         }
     }
     
-    private func passPostData() {
-        fullScreenPostVM.postID = displayedPostID
+    private func passPostData(_ data:String) {
+        fullScreenPostVM.postID = data
     }
     
     func openPost(postID: String) {
         postView.toggle()
-        displayedPostID = postID
-        passPostData()
+        passPostData(postID)
     }
     
     
     init() {
-        self.screenHeight = UIScreen.screenHeight
         self.appState = AppState.tabView
         self._signUpVM = SignUpViewModel(coordinator: self)
         self._appTabVM = AppTabViewModel(coordinator: self)

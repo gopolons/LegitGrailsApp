@@ -86,63 +86,12 @@ struct PostView: View {
 
                 }
                 
-                HStack(spacing: 20) {
-                    HStack {
-                        Image(systemName: "eye")
-                        Text("\(modelData.post.viewCountIDs.count)")
-                            .font(.caption)
-                            .fixedSize(horizontal: true, vertical: false)
-
-                        
-                    }
-                    .foregroundColor(.gray)
-                    
-                    Spacer(minLength: 0)
-                    
-                    HStack {
-                        Button {
-                            modelData.repostPressed()
-                        } label: {
-                            Text("\(modelData.post.repostIDs.count)")
-                                .font(.caption)
-                                .fixedSize(horizontal: true, vertical: false)
-
-                            Image(systemName: "arrowshape.turn.up.forward.fill")
-                        }
-                        .buttonStyle(PlainButtonStyle())
-
-
-                    }
-                    .foregroundColor(modelData.reposted ? Color("AccentColor") : .gray)
-
-                    
-                    HStack {
-                        Text("\(modelData.post.commentIDs.count)")
-                            .font(.caption)
-                            .fixedSize(horizontal: true, vertical: false)
-                        
-                        Image(systemName: "bubble.left.fill")
-                            .foregroundColor(.gray)
-
-
-                    }
-                    .foregroundColor(.gray)
-                    
-                    HStack {
-                        Button {
-                            modelData.likePressed()
-                        } label: {
-                            Text("\(modelData.post.likeIDs.count)")
-                                .font(.caption)
-                                .fixedSize(horizontal: true, vertical: false)
-                            
-                            Image(systemName: "heart.fill")
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                    }
-                    .foregroundColor(modelData.liked ? Color("AccentColor") : .gray)
-                    .hapticFeedback(.soft)
-                }
+                PostFooterView(pressedRepost: {
+                    modelData.repostPressed()
+                }, pressedLike: {
+                    modelData.likePressed()
+                }, reposted: $modelData.reposted, liked: $modelData.liked, likeCount: $modelData.likeCount, viewCount: $modelData.viewCount, repostCount: $modelData.repostCount, commentCount: $modelData.commentCount)
+                
                 
             }
             .frame(maxWidth: .infinity)
@@ -162,12 +111,12 @@ struct PostView: View {
         }
     }
 }
-
-struct PostView_Previews: PreviewProvider {
-    
-    @State static var post = Post(ID: "", tags: ["thoughts"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: ["", ""], commentIDs: ["fd", "fds", "fdsa"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa"], viewCountIDs: ["fd", "fds", "fdsa"])
-    
-    static var previews: some View {
-        PostView(modelData: PostViewModel(post: post, coordinator: SessionManagerObject()))
-    }
-}
+//
+//struct PostView_Previews: PreviewProvider {
+//
+//    @State static var post = Post(ID: "", tags: ["thoughts"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: ["", ""], commentIDs: ["fd", "fds", "fdsa"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa"], viewCountIDs: ["fd", "fds", "fdsa"])
+//
+//    static var previews: some View {
+//        PostView(modelData: PostViewModel(post: post, coordinator: SessionManagerObject()))
+//    }
+//}

@@ -19,6 +19,8 @@ protocol PostDataRepositoryProtocol {
     func unrepost(id: String, userID: String, completion: @escaping (NetResponse?, NetError?) -> Void)
     
     func fetchPost(id: String, completion: @escaping (Post?, NetError?) -> Void)
+    
+    func fetchComment(id: String, completion: @escaping (Comment?, NetError?) -> Void)
 }
 
 final class PostDataRepository: PostDataRepositoryProtocol {
@@ -136,6 +138,28 @@ final class PostDataRepository: PostDataRepositoryProtocol {
     func fetchPost(id: String, completion: @escaping (Post?, NetError?) -> Void) {
         if serviceManager.checkConnection() {
             apiService.fetchPost(id: id) { data, err in
+                guard err == nil else {
+                    switch err {
+                    case .invalidRequest:
+                        completion(nil, err)
+                        return
+                    case .noConnection:
+                        completion(nil, err)
+                        return
+                    case .none:
+                        return
+                    }
+                }
+                completion(data, nil)
+            }
+        } else {
+            completion(nil, NetError.noConnection)
+        }
+    }
+    
+    func fetchComment(id: String, completion: @escaping (Comment?, NetError?) -> Void) {
+        if serviceManager.checkConnection() {
+            apiService.fetchComment(id: id) { data, err in
                 guard err == nil else {
                     switch err {
                     case .invalidRequest:
