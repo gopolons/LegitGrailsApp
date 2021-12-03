@@ -30,7 +30,6 @@ struct CommentInputField: View {
                     .foregroundColor(Color(.systemGray3))
             }
             .padding()
-            .padding(.bottom, 40)
             .background(Color(.systemGray6))
 
         }

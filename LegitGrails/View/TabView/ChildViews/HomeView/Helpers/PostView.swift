@@ -86,63 +86,12 @@ struct PostView: View {
 
                 }
                 
-                HStack(spacing: 20) {
-                    HStack {
-                        Image(systemName: "eye")
-                        Text("\(modelData.post.viewCountIDs.count)")
-                            .font(.caption)
-                            .fixedSize(horizontal: true, vertical: false)
-
-                        
-                    }
-                    .foregroundColor(.gray)
-                    
-                    Spacer(minLength: 0)
-                    
-                    HStack {
-                        Button {
-                            modelData.repostPressed()
-                        } label: {
-                            Text("\(modelData.post.repostIDs.count)")
-                                .font(.caption)
-                                .fixedSize(horizontal: true, vertical: false)
-
-                            Image(systemName: "arrowshape.turn.up.forward.fill")
-                        }
-                        .buttonStyle(PlainButtonStyle())
-
-
-                    }
-                    .foregroundColor(modelData.reposted ? Color("AccentColor") : .gray)
-
-                    
-                    HStack {
-                        Text("\(modelData.post.commentIDs.count)")
-                            .font(.caption)
-                            .fixedSize(horizontal: true, vertical: false)
-                        
-                        Image(systemName: "bubble.left.fill")
-                            .foregroundColor(.gray)
-
-
-                    }
-                    .foregroundColor(.gray)
-                    
-                    HStack {
-                        Button {
-                            modelData.likePressed()
-                        } label: {
-                            Text("\(modelData.post.likeIDs.count)")
-                                .font(.caption)
-                                .fixedSize(horizontal: true, vertical: false)
-                            
-                            Image(systemName: "heart.fill")
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                    }
-                    .foregroundColor(modelData.liked ? Color("AccentColor") : .gray)
-                    .hapticFeedback(.soft)
-                }
+                PostFooterView(pressedRepost: {
+                    modelData.repostPressed()
+                }, pressedLike: {
+                    modelData.likePressed()
+                }, reposted: $modelData.reposted, liked: $modelData.liked, likeCount: $modelData.likeCount, viewCount: $modelData.viewCount, repostCount: $modelData.repostCount, commentCount: $modelData.commentCount)
+                
                 
             }
             .frame(maxWidth: .infinity)

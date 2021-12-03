@@ -5,6 +5,9 @@
 //  Created by Georgy Polonskiy on 01/12/2021.
 //
 
+//                .focusedLegacy($focusedFields, equals: .input)
+
+
 import SwiftUI
 import SPAlert
 import Focuser
@@ -17,6 +20,8 @@ struct FullScreenGenericPostView: View {
     
     var body: some View {
         ZStack {
+            
+            
             VStack(spacing: 0) {
                 if modelData.post == nil {
                     
@@ -25,25 +30,34 @@ struct FullScreenGenericPostView: View {
                 } else {
                     
                     FullScreenGenericPostContentView(modelData: modelData)
-                        .padding(.bottom, 70)
+                        .padding(.bottom, 60)
                     
                 }
             }
             
-            VStack {
+            
+            VStack(spacing: 0) {
+                Spacer()
+                
+                Rectangle()
+                    .frame(width: UIScreen.screenWidth, height: 40)
+                    .foregroundColor(Color(.systemGray6))
+            }
+            .ignoresSafeArea()
+            
+            VStack(spacing: 0) {
                 
                 Spacer()
                 
-                CommentInputField()
-                    .focusedLegacy($focusedFields, equals: .input)
-                    .zIndex(10)
+                VStack {
+                    CommentInputField()
+                }
+                .background(Color(.systemGray6))
 
-
+                    
             }
-            .zIndex(10)
-            .ignoresSafeArea(.all)
+            
         }
-        .keyboardAdaptive()
         .spAlert(isPresent: $modelData.alert, title: "Error!", message: modelData.alertMessage, duration: 1, dismissOnTap: true, preset: .error, haptic: .error, layout: .message()) {
             
         }

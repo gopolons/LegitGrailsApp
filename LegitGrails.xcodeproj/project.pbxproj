@@ -76,6 +76,8 @@
 		94E8B7F327596B5700A63152 /* FullScreenGenericPostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E8B7F227596B5700A63152 /* FullScreenGenericPostContentView.swift */; };
 		94E8B7F52759747E00A63152 /* CommentStackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E8B7F42759747E00A63152 /* CommentStackViewModel.swift */; };
 		94E8B7F727597A2400A63152 /* CommentStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E8B7F627597A2400A63152 /* CommentStackView.swift */; };
+		94E8B7F9275985DA00A63152 /* FullScreenGenericPostDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E8B7F8275985DA00A63152 /* FullScreenGenericPostDetailsView.swift */; };
+		94E8B7FB275986D700A63152 /* PostFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E8B7FA275986D700A63152 /* PostFooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +168,8 @@
 		94E8B7F227596B5700A63152 /* FullScreenGenericPostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenGenericPostContentView.swift; sourceTree = "<group>"; };
 		94E8B7F42759747E00A63152 /* CommentStackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentStackViewModel.swift; sourceTree = "<group>"; };
 		94E8B7F627597A2400A63152 /* CommentStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentStackView.swift; sourceTree = "<group>"; };
+		94E8B7F8275985DA00A63152 /* FullScreenGenericPostDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenGenericPostDetailsView.swift; sourceTree = "<group>"; };
+		94E8B7FA275986D700A63152 /* PostFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -557,11 +561,8 @@
 		94AA22482758448B00937B07 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				94E8B7EB27595F2D00A63152 /* PostLoadingView.swift */,
-				94E8B7F227596B5700A63152 /* FullScreenGenericPostContentView.swift */,
-				94AA224D2758572300937B07 /* CommentInputField.swift */,
-				94AA22492758449A00937B07 /* CommentCell.swift */,
-				94E8B7F627597A2400A63152 /* CommentStackView.swift */,
+				94E8B7FC2759881700A63152 /* PostViews */,
+				94E8B7FD2759883500A63152 /* CommentViews */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -581,6 +582,27 @@
 				94E8B7F02759660F00A63152 /* CommentCellViewModel.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		94E8B7FC2759881700A63152 /* PostViews */ = {
+			isa = PBXGroup;
+			children = (
+				94E8B7EB27595F2D00A63152 /* PostLoadingView.swift */,
+				94E8B7F227596B5700A63152 /* FullScreenGenericPostContentView.swift */,
+				94E8B7F8275985DA00A63152 /* FullScreenGenericPostDetailsView.swift */,
+				94E8B7FA275986D700A63152 /* PostFooterView.swift */,
+			);
+			path = PostViews;
+			sourceTree = "<group>";
+		};
+		94E8B7FD2759883500A63152 /* CommentViews */ = {
+			isa = PBXGroup;
+			children = (
+				94AA22492758449A00937B07 /* CommentCell.swift */,
+				94E8B7F627597A2400A63152 /* CommentStackView.swift */,
+				94AA224D2758572300937B07 /* CommentInputField.swift */,
+			);
+			path = CommentViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -752,6 +774,7 @@
 				9459CF1227552E9C0031E6F7 /* SignInView.swift in Sources */,
 				9459CF442755AB180031E6F7 /* AuthenticationDataRepository.swift in Sources */,
 				9459CF692756380E0031E6F7 /* ProfileView.swift in Sources */,
+				94E8B7FB275986D700A63152 /* PostFooterView.swift in Sources */,
 				9459CF5D275631440031E6F7 /* ActivityIndicator.swift in Sources */,
 				9459CF6C275638860031E6F7 /* AppTabViewModel.swift in Sources */,
 				9459CF4A2755AD0F0031E6F7 /* NetError.swift in Sources */,
@@ -765,6 +788,7 @@
 				9459CF7427564B060031E6F7 /* HomeLinks.swift in Sources */,
 				9459CF67275638070031E6F7 /* AuthenticateView.swift in Sources */,
 				94E8B7E82759107200A63152 /* FullScreenGenericPostViewFormField.swift in Sources */,
+				94E8B7F9275985DA00A63152 /* FullScreenGenericPostDetailsView.swift in Sources */,
 				9459CF26275540300031E6F7 /* SignInViewModel.swift in Sources */,
 				9459CF8C2756C4380031E6F7 /* FullScreenPostImageView.swift in Sources */,
 				94AA22372757AB8600937B07 /* NoFeedbackButtonStyle.swift in Sources */,
