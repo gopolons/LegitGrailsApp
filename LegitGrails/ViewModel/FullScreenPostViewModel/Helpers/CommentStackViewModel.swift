@@ -14,7 +14,11 @@ final class CommentStackViewModel: ObservableObject {
     
     private var dataRepo: PostDataRepository
     
+    var postCoordinator: FullScreenGenericPostViewModel
+    
     @Published var commentsUnavailable = false
+    
+    @Published var selectedComment = ""
     
     private func fetchData() {
         for id in commentIDs {
@@ -45,8 +49,17 @@ final class CommentStackViewModel: ObservableObject {
     }
     
     
-    init(commentIDs: [String]) {
+    func changeSelectedComment(_ id: String) {
+        withAnimation {
+            selectedComment = id
+        }
+        postCoordinator.changeSelectedComment(id)
+    }
+    
+    
+    init(commentIDs: [String], postCoordinator: FullScreenGenericPostViewModel) {
         self.dataRepo = PostDataRepository()
         self.commentIDs = commentIDs
+        self.postCoordinator = postCoordinator
     }
 }

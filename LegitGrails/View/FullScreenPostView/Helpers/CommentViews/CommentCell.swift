@@ -11,11 +11,6 @@ struct CommentCell: View {
     
     @StateObject var modelData: CommentCellViewModel
     
-
-    
-
-
-    
     var body: some View {
         VStack(spacing: 10) {
             VStack(alignment: .leading, spacing: 10) {
@@ -143,14 +138,11 @@ struct CommentCell: View {
                 Spacer()
             }
             .padding(.leading, 50)
-            
-            
 
-            
         }
         .padding(.horizontal)
         .padding(.vertical)
-        .background(modelData.selected ? Color(.systemFill) : Color(.clear))
+        .background(modelData.commentStackCoordinator.selectedComment == modelData.comment.ID ? Color(.systemFill) : Color(.clear))
     }
 }
 
@@ -159,6 +151,6 @@ struct CommentCell_Previews: PreviewProvider {
     @State static var selectedCommentID = "1"
     
     static var previews: some View {
-        CommentCell(modelData: CommentCellViewModel(comment: Comment(ID: "", username: "gdsaj", image: "AuthenticateLink", date: "11 of Jun??", text: "fdsafj dsafdsa", comments: [])))
+        CommentCell(modelData: CommentCellViewModel(comment: Comment(ID: "", username: "gdsaj", image: "AuthenticateLink", date: "11 of Jun??", text: "fdsafj dsafdsa", comments: []), commentStackCoordinator: CommentStackViewModel(commentIDs: [], postCoordinator: FullScreenGenericPostViewModel(coordinator: SessionManagerObject()))))
     }
 }

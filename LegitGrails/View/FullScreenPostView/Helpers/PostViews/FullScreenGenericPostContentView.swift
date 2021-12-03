@@ -13,36 +13,35 @@ struct FullScreenGenericPostContentView: View {
     
     var body: some View {
         if !(modelData.post == nil) {
+            
             ScrollView {
-                ScrollViewReader { (proxy: ScrollViewProxy) in
-                    
-                    FullScreenGenericPostDetailsView(modelData: modelData)
-                    
-                    PostFooterView(pressedRepost: {
-                        modelData.pressedRepost()
-                    }, pressedLike: {
-                        modelData.pressedLike()
-                    }, reposted: $modelData.reposted, liked: $modelData.liked, likeCount: $modelData.likeCount, viewCount: $modelData.viewCount, repostCount: $modelData.repostCount, commentCount: $modelData.commentCount)
-                        .padding()
-                    
-                    Divider()
-                    
-                    VStack {
-                        HStack {
-                            Text("Comments")
-                                .font(.title2)
-                                .bold()
-                            
-                            Spacer()
-                        }
+                FullScreenGenericPostDetailsView(modelData: modelData)
+                
+                PostFooterView(pressedRepost: {
+                    modelData.pressedRepost()
+                }, pressedLike: {
+                    modelData.pressedLike()
+                }, reposted: $modelData.reposted, liked: $modelData.liked, likeCount: $modelData.likeCount, viewCount: $modelData.viewCount, repostCount: $modelData.repostCount, commentCount: $modelData.commentCount)
+                    .padding()
+                
+                Divider()
+                
+                VStack {
+                    HStack {
+                        Text("Comments")
+                            .font(.title2)
+                            .bold()
+                        
+                        Spacer()
                     }
-                    .padding([.horizontal, .top])
-                    
-                    CommentStackView(modelData: modelData.commentStackVM)
-
                 }
+                .padding([.horizontal, .top])
+                
+                CommentStackView(commentStackModelData: modelData.commentStackVM)
+
+            
             }
-    //                    .padding(.bottom, 70)
+            
             .onDisappear {
                 modelData.onDisappear()
             }

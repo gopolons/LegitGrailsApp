@@ -9,20 +9,20 @@ import SwiftUI
 
 struct CommentStackView: View {
     
-    @StateObject var modelData: CommentStackViewModel
+    @StateObject var commentStackModelData: CommentStackViewModel
     
     var body: some View {
         VStack(spacing: 0) {
-            if modelData.commentsUnavailable {
+            if commentStackModelData.commentsUnavailable {
                 Text("No comments yet! Be the first one to share your thoughts!")
                     .foregroundColor(.gray)
                     .font(.footnote)
                     .padding()
                     .padding(.bottom)
             } else {
-                ForEach(modelData.comments, id: \.self) { comment in
+                ForEach(commentStackModelData.comments, id: \.self) { comment in
                     
-                    CommentCell(modelData: CommentCellViewModel(comment: comment))
+                    CommentCell(modelData: CommentCellViewModel(comment: comment, commentStackCoordinator: commentStackModelData))
                         
                     
                     Divider()
@@ -32,13 +32,13 @@ struct CommentStackView: View {
             }
         }
         .onAppear {
-            modelData.onAppear()
+            commentStackModelData.onAppear()
         }
     }
 }
 
 struct CommentStackView_Previews: PreviewProvider {
     static var previews: some View {
-        CommentStackView(modelData: CommentStackViewModel(commentIDs: []))
+        CommentStackView(commentStackModelData: CommentStackViewModel(commentIDs: [], postCoordinator: FullScreenGenericPostViewModel(coordinator: SessionManagerObject())))
     }
 }

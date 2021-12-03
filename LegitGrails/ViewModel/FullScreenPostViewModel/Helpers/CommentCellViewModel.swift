@@ -8,17 +8,19 @@
 import SwiftUI
 
 final class CommentCellViewModel: ObservableObject {
-    @Published var comment: Comment! = Comment(ID: "1", username: "boljedorik", image: "", date: "1 Sep at 1:36 PM", text: "Fire shoes mf", comments: [Reply(ID: "", username: "zhopik", image: "", date: "1 Sep at 1:36 PM", text: "year fam"), Reply(ID: "", username: "zhopik", image: "", date: "1 Sep at 1:36 PM", text: "year fam"), Reply(ID: "", username: "zhopik", image: "", date: "1 Sep at 1:36 PM", text: "year fam"), Reply(ID: "", username: "zhopik", image: "", date: "1 Sep at 1:36 PM", text: "year fam")])
+    @Published var comment: Comment! 
     @Published var tooManyComments: Bool = false
     @Published var selected = false
-    @Published var shownComments = 2
-    
+    @Published var shownComments = 2    
     private var dataRepo: PostDataRepositoryProtocol
     
-    var isSelected = false
+    private var _commentStackCoordinator: CommentStackViewModel
+    var commentStackCoordinator: CommentStackViewModel {
+        return _commentStackCoordinator
+    }
 
     func commentPressed() {
-        
+        commentStackCoordinator.changeSelectedComment(comment.ID)
     }
     
     func buttonPress() {
@@ -28,14 +30,11 @@ final class CommentCellViewModel: ObservableObject {
         }
     }
 
-
-    
-    
     var extraComments: Bool = true
     
-    init(dataRepo: PostDataRepositoryProtocol = PostDataRepository(), comment: Comment) {
+    init(dataRepo: PostDataRepositoryProtocol = PostDataRepository(), comment: Comment, commentStackCoordinator: CommentStackViewModel) {
         self.dataRepo = dataRepo
         self.comment = comment
+        self._commentStackCoordinator = commentStackCoordinator
     }
-
 }

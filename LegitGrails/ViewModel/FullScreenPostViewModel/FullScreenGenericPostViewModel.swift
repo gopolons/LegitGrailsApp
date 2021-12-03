@@ -13,7 +13,6 @@ final class FullScreenGenericPostViewModel: ObservableObject {
     @Published var reposted = false
 //    MARK: CHANGE COMMENTS FOR PRODUCTION
     @Published var post: Post!
-//    @Published var post: Post! = Post(ID: "1", tags: ["DEBUG POST"], userID: "", username: "username", communityID: "", communityName: "👜 Luxury lovers", title: "Here's how you can check your Gucci GG!", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", images: ["HowItWorksLink", "AuthenticateLink", "PracticeLink"], commentIDs: ["1", "2"], repostIDs: ["fd", "fds", "fdsa"], likeIDs: ["fd", "fds", "fdsa", "test"], viewCountIDs: ["fd", "fds", "fdsa"])
 
     @Published var alert = false
     @Published var alertMessage = ""
@@ -24,11 +23,12 @@ final class FullScreenGenericPostViewModel: ObservableObject {
     @Published var commentCount = 0
     @Published var viewCount = 0
     
-    
-    
     private var coordinator: SessionManagerObject
     private var dataRepo: PostDataRepositoryProtocol
-    var commentStackVM = CommentStackViewModel(commentIDs: [])
+    private var _commentStackVM: CommentStackViewModel!
+    var commentStackVM: CommentStackViewModel {
+        return _commentStackVM
+    }
     
     private func updateFooter() {
         likeCount = post.likeIDs.count
@@ -178,7 +178,7 @@ final class FullScreenGenericPostViewModel: ObservableObject {
                 }
             }
 
-            self.commentStackVM = CommentStackViewModel(commentIDs: post!.commentIDs)
+            self._commentStackVM = CommentStackViewModel(commentIDs: post!.commentIDs, postCoordinator: self)
 
             if post!.likeIDs.contains(self.coordinator.userID) {
                 self.liked = true
@@ -195,14 +195,19 @@ final class FullScreenGenericPostViewModel: ObservableObject {
             
             self.updateFooter()
 
-
-
         }
 
+    }
+    
+    func changeSelectedComment(_ id: String) {
+        withAnimation {
+            self.selectedCommentID = id
+        }
     }
     
     init(coordinator: SessionManagerObject, dataRepo: PostDataRepositoryProtocol = PostDataRepository()) {
         self.coordinator = coordinator
         self.dataRepo = dataRepo
+        self._commentStackVM = CommentStackViewModel(commentIDs: [], postCoordinator: self)
     }
 }

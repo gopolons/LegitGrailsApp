@@ -50,9 +50,10 @@ struct FullScreenGenericPostView: View {
                 Spacer()
                 
                 VStack {
+                    
                     CommentInputField()
+                    
                 }
-                .background(Color(.systemGray6))
 
                     
             }
